@@ -1,0 +1,14 @@
+{
+  "name": "Time 2",
+  "strikers": {
+    "level": {
+      "goodStriker": 6,
+      "goodForwardBench": 4
+    },
+    "has": {
+      "goodStriker": true,
+      "goodStrikerInjured": false,
+      "goodForwardBench": false
+    }
+  }
+}

@@ -1,5 +1,5 @@
 (function(angular) {
     'use strick';
-    
-    angular.module('exponent', []);
+
+    angular.module('team', []);
 })(window.angular);

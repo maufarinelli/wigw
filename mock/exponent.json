@@ -1,13 +1,14 @@
 {
   "won-last-year": 2,
   "team-in-shaping": 4,
-  "team-has-chemistry": 3,
+  "team-has-chemistry": 5,
   "won-regional": 2,
   "strikers": {
-    "has-good-striker": 4,
-    "good-striker-injured": 3,
-    "has-good-forward-bench": 3,
-    "good-quantity-of-forward": 2
+    "exp": {
+      "goodStriker": 4,
+      "goodStrikerInjured": 4,
+      "goodForwardBench": 3
+    }
   },
   "middlefield" : {
     "has-good-middlefield": 3,
@@ -29,13 +30,13 @@
   },
   "changed-coach-recently": 2,
   "solid pre-season": 3,
-  "coach-level": 4,
+  "coach-level": 5,
   "how-many-championship-won": 1,
   "how-many-championship-coach-won": 3,
   "playing-other-championship": 4,
   "good-quantity-of-players": 4,
   "experienced-team": 4,
-  "good-balance-experience-youth": 3,
+  "good-balance-experience-youth": 5,
   "team-with-too-much-young-player": 4,
   "official-supporter-program": 3,
   "strong-playing-home": 3,

@@ -1,8 +1,8 @@
 (function(angular) {
     'use strict'; 
     
-    function exponentService($http) {
-        this.getExponent = function(url) {
+    function teamService($http) {
+        this.getTeamData = function(url) {
             return $http.get('/mock/' + url + '.json')
                 .success(function(data, status, headers, config) {
                     return data;
@@ -13,6 +13,6 @@
         };
     }
 
-    angular.module('exponent')
-        .service('exponentService', exponentService);
+    angular.module('team')
+        .service('teamService', teamService);
 })(window.angular);
