@@ -1,26 +1,30 @@
 (function(angular) {
     'use strick';
     
-    function teamComponent(teamService) {
+    function TeamComponent($q, teamService) {
         var self;
 
         var Team = function(options) {
             self = this;
             this.data;
-
-            this.init(options);
+            this.promise = this.getPromise(options);
         };
 
-        Team.prototype.init = function(options) {
-            teamService.getTeamData(options.url)
-                .then(function(result) {
-                    self.data = result.data;
-                });
+        Team.prototype.getPromise = function(options) {
+            return teamService.getTeamData(options.url);
+        };
+
+        Team.prototype.setData = function(data) {
+            this.data = data;
+        };
+
+        Team.prototype.getData = function() {
+            return this.data;
         };
 
         return Team;
     }
 
     angular.module('team')
-        .factory('teamComponent', teamComponent);
+        .factory('TeamComponent', TeamComponent);
 })(window.angular);

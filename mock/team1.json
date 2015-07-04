@@ -2,13 +2,46 @@
   "name": "Time 1",
   "strikers": {
     "level": {
-      "goodStriker": 8,
-      "goodForwardBench": 6
+      "goodPlayer": 8,
+      "goodPositionBench": 6
     },
     "has": {
-      "goodStriker": true,
-      "goodStrikerInjured": false,
-      "goodForwardBench": true
+      "goodPlayer": true,
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
+    }
+  },
+  "midfield" : {
+    "level": {
+      "goodPlayer": 7,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayer": true,
+      "goodPlayerInjured": false,
+      "goodPositionBench": false
+    }
+  },
+  "goalkeeper": {
+    "level": {
+      "goodPlayer": 8,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayer": true,
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
+    }
+  },
+  "back": {
+    "level": {
+      "goodPlayer": 6,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayer": false,
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
     }
   }
 }

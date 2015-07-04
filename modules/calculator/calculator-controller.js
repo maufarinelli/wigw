@@ -1,28 +1,73 @@
 (function(angular) {
     'use strick'; 
     
-    function CalculatorController($scope, teamComponent, exponentComponent) {
-        var configTeam = {url: 'team1'};
-        var team = new teamComponent(configTeam);
-        console.log(team);
+    function CalculatorController($scope, $q, TeamComponent, ExponentComponent) {
+        var self = this,
+            promises = [];
 
-        var configExp = {url: 'exponent'};
-        var exponent = new exponentComponent(configExp);
-        console.log(exponent);
+        function initTeam(urlTeam) {
+            var configTeam = {
+                    url: urlTeam
+                };
+
+            self.team = new TeamComponent(configTeam);
+
+            var teamPromise = self.team.promise.then(function(result) {
+                self.team.setData(result.data);
+            });
+
+            promises.push(teamPromise);
+        }
+
+        function initExponent(urlExponent) {
+            var configExp = {
+                    url: urlExponent
+                };
+
+            self.exponent = new ExponentComponent(configExp);
+
+            var exponentPromise = self.exponent.promise.then(function(result) {
+                self.exponent.setData(result.data);
+            });
+
+            promises.push(exponentPromise);
+        }
+
+        function initCalculator() {
+            var strikers,
+                midfield,
+                goalkeeper, 
+                back;
+            
+            $q.all(promises).then(function() {
+                strikers = self.calculatePositions('strikers');
+                console.log(strikers);
+
+                midfield = self.calculatePositions('midfield');
+                console.log(midfield);
+
+                goalkeeper = self.calculatePositions('goalkeeper');
+                console.log(goalkeeper);
+
+                back = self.calculatePositions('back');
+                console.log(back);
+            });
+        }
+        
 
         /**
          * [_hasGoodStrickerNotInjured description]
          * @param  {Boolean} hasBench              if team has a good forward bench
-         * @param  {Number}  levelGoodStrickers    level of its good stricker (1-10)
-         * @param  {Number}  expGoodStricker       the exponent for good strickers
-         * @param  {Number}  levelGoodForwardBench level of its good forward bench (1-10)
+         * @param  {Number}  levelGoodPlayers    level of its good stricker (1-10)
+         * @param  {Number}  expGoodPlayers       the exponent for good strickers
+         * @param  {Number}  levelGoodPositionBench level of its good forward bench (1-10)
          * @param  {Number}  expGoodBench          the exponent for good forward bench
          * @return {Number}                        calculated value for a good stricker not injured
          */
-        function _hasGoodStrickerNotInjured(hasBench, levelGoodStrickers, expGoodStricker, levelGoodForwardBench, expGoodBench) {
-            var result = expGoodStricker * levelGoodStrickers
+        function _hasGoodStrickerNotInjured(hasBench, levelGoodPlayers, expGoodPlayers, levelGoodPositionBench, expGoodBench) {
+            var result = expGoodPlayers * levelGoodPlayers;
             if(hasBench) {
-                result += expGoodBench * levelGoodForwardBench;
+                result += expGoodBench * levelGoodPositionBench;
             }
             return result;
         }
@@ -30,42 +75,54 @@
         /**
          * [_hasGoodStrickerInjured description]
          * @param  {Boolean} hasBench              if team has a good forward bench
-         * @param  {[type]}  levelGoodForwardBench level of its good forward bench (1-10)
+         * @param  {[type]}  levelGoodPositionBench level of its good forward bench (1-10)
          * @param  {[type]}  expGoodBench          the exponent for good forward bench
          * @return {Boolean}                       calculated value for a good stricker injured
          */
-        function _hasGoodStrickerInjured(hasBench, levelGoodForwardBench, expGoodBench) {
-            var exp = levelGoodForwardBench;
+        function _hasGoodStrickerInjured(hasBench, levelGoodPositionBench, expGoodBench) {
+            var exp = levelGoodPositionBench;
             if(hasBench) {
-                exp = expGoodBench * levelGoodForwardBench;
+                exp = expGoodBench * levelGoodPositionBench;
             }
             return exp;
         }
 
-        this.calculateStrickers = function() {
-            var hasGoodStrickers = team.strikers.has.goodStriker,
-                hasGoodStrikerInjured = team.strikers.has.goodStrikerInjured,
-                hasGoodForwardBench = team.strikers.has.goodForwardBench,
+        // Properties
+        this.team;
+        this.exponent;
 
-                levelGoodStrickers = team.strikers.level.goodStriker,
-                levelGoodForwardBench = team.strikers.level.goodForwardBench,
+        // Methods
+        this.calculatePositions = function(position) {
+            var team = self.team.getData(),
+                exponent = self.exponent.getData();
 
-                expGoodStricker = exponent.strikers.exp.goodStriker,
-                expGoodBench = exponent.strikers.exp.goodForwardBench;
+            var hasGoodPlayers = team[position].has.goodPlayer,
+                hasGoodPlayersInjured = team[position].has.goodPlayerInjured,
+                hasGoodPositionBench = team[position].has.goodPositionBench,
 
-            if(hasGoodStrickers && !hasGoodStrikerInjured) {
-                return _hasGoodStrickerNotInjured(hasGoodForwardBench, levelGoodStrickers, expGoodStricker, levelGoodForwardBench, expGoodBench);
+                levelGoodPlayers = team[position].level.goodPlayer,
+                levelGoodPositionBench = team[position].level.goodPositionBench,
+
+                expGoodPlayers = exponent[position].exp.goodPlayer,
+                expGoodBench = exponent[position].exp.goodPositionBench;
+
+            if(hasGoodPlayers && !hasGoodPlayersInjured) {
+                return _hasGoodStrickerNotInjured(hasGoodPositionBench, levelGoodPlayers, expGoodPlayers, levelGoodPositionBench, expGoodBench);
             }
-            else if(hasGoodStrickers && hasGoodStrikerInjured) {
-                return _hasGoodStrickerInjured(hasGoodForwardBench, levelGoodForwardBench, expGoodBench);
+            else if(hasGoodPlayers && hasGoodPlayersInjured) {
+                return _hasGoodStrickerInjured(hasGoodPositionBench, levelGoodPositionBench, expGoodBench);
             }
-            else if(hasGoodForwardBench){
-                return expGoodBench * levelGoodForwardBench;
+            else if(hasGoodPositionBench){
+                return expGoodBench * levelGoodPositionBench;
             }
             else {
                 return 1;
             }
         }
+
+        initTeam('team1');
+        initExponent('exponent');
+        initCalculator();
     }
 
     angular.module('calculator')

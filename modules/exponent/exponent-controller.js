@@ -8,7 +8,7 @@
             total = 1;
 
         function initPromise() {
-            var deffered  = $q.defer(),
+            var deferred  = $q.defer(),
                 promises = [];
 
             var exponentPromise = exponentService.getExponent()
