@@ -43,5 +43,25 @@
       "goodPlayerInjured": false,
       "goodPositionBench": true
     }
+  },
+  "teamShape": {
+    "has": {
+      "chemistry": true
+    },
+    "level": {
+      "chemistry": 7
+    }
+  },
+  "teamExperience": {
+    "has": {
+      "experience": true,
+      "goodBalanceExperienceYouth": true,
+      "tooMuchOldPlayers": false,
+      "tooMuchYoungPlayers": false
+    },
+    "level": {
+      "experience": 8,
+      "goodBalanceExperienceYouth": 8
+    }
   }
 }

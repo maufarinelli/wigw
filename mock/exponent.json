@@ -27,11 +27,18 @@
       "goodPositionBench": 3
     }
   },
-  "teamInShaping": 4,
-  "teamHasChemistry": 5,
-  "experiencedTeam": 4,
-  "goodBalanceExperienceYouth": 5,
-  "teamWithTooMuchYoungPlayer": 4,
+  "teamShape": {
+    "exp": {
+      "chemistry": 5
+    }
+  },
+  "teamExperience": {
+    "exp": {
+      "experience": 4,
+      "goodBalanceExperienceYouth": 5
+    }
+  },
+
   "goodQuantityOfPlayers": 4,
 
   "wonRegional": 2,

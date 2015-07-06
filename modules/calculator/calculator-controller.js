@@ -56,15 +56,15 @@
         
 
         /**
-         * [_hasGoodStrickerNotInjured description]
-         * @param  {Boolean} hasBench              if team has a good forward bench
-         * @param  {Number}  levelGoodPlayers    level of its good stricker (1-10)
-         * @param  {Number}  expGoodPlayers       the exponent for good strickers
+         * Get calculation of good player not injured
+         * @param  {Boolean} hasBench               if team has a good player bench
+         * @param  {Number}  levelGoodPlayers       level of its good players (1-10)
+         * @param  {Number}  expGoodPlayers         the exponent for good players
          * @param  {Number}  levelGoodPositionBench level of its good forward bench (1-10)
-         * @param  {Number}  expGoodBench          the exponent for good forward bench
-         * @return {Number}                        calculated value for a good stricker not injured
+         * @param  {Number}  expGoodBench           the exponent for good player bench
+         * @return {Number}                         calculated value for a good player not injured
          */
-        function _hasGoodStrickerNotInjured(hasBench, levelGoodPlayers, expGoodPlayers, levelGoodPositionBench, expGoodBench) {
+        function _getGoodPlayerNotInjuredCalculate(hasBench, levelGoodPlayers, expGoodPlayers, levelGoodPositionBench, expGoodBench) {
             var result = expGoodPlayers * levelGoodPlayers;
             if(hasBench) {
                 result += expGoodBench * levelGoodPositionBench;
@@ -73,13 +73,13 @@
         }
 
         /**
-         * [_hasGoodStrickerInjured description]
-         * @param  {Boolean} hasBench              if team has a good forward bench
-         * @param  {[type]}  levelGoodPositionBench level of its good forward bench (1-10)
-         * @param  {[type]}  expGoodBench          the exponent for good forward bench
-         * @return {Boolean}                       calculated value for a good stricker injured
+         * Get calculation of good player injured
+         * @param  {Boolean} hasBench               if team has a good players bench
+         * @param  {Number}  levelGoodPositionBench level of its good players bench (1-10)
+         * @param  {Number}  expGoodBench           the exponent for good players bench
+         * @return {Boolean}                        calculated value for a good players injured
          */
-        function _hasGoodStrickerInjured(hasBench, levelGoodPositionBench, expGoodBench) {
+        function _getGoodPlayerInjuredCalculate(hasBench, levelGoodPositionBench, expGoodBench) {
             var exp = levelGoodPositionBench;
             if(hasBench) {
                 exp = expGoodBench * levelGoodPositionBench;
@@ -107,10 +107,10 @@
                 expGoodBench = exponent[position].exp.goodPositionBench;
 
             if(hasGoodPlayers && !hasGoodPlayersInjured) {
-                return _hasGoodStrickerNotInjured(hasGoodPositionBench, levelGoodPlayers, expGoodPlayers, levelGoodPositionBench, expGoodBench);
+                return _getGoodPlayerNotInjuredCalculate(hasGoodPositionBench, levelGoodPlayers, expGoodPlayers, levelGoodPositionBench, expGoodBench);
             }
             else if(hasGoodPlayers && hasGoodPlayersInjured) {
-                return _hasGoodStrickerInjured(hasGoodPositionBench, levelGoodPositionBench, expGoodBench);
+                return _getGoodPlayerInjuredCalculate(hasGoodPositionBench, levelGoodPositionBench, expGoodBench);
             }
             else if(hasGoodPositionBench){
                 return expGoodBench * levelGoodPositionBench;
@@ -118,7 +118,18 @@
             else {
                 return 1;
             }
-        }
+        };
+
+        this.calculateTeamShape = function() {
+            var team = self.team.getData(),
+                exponent = self.exponent.getData();
+
+            var hasExperience = team.teamShape.has.
+        };
+
+        this.calculateTeamExperience = function() {
+
+        };
 
         initTeam('team1');
         initExponent('exponent');
