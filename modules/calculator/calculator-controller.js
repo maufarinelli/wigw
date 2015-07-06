@@ -37,7 +37,8 @@
             var strikers,
                 midfield,
                 goalkeeper, 
-                back;
+                back,
+                teamShape;
             
             $q.all(promises).then(function() {
                 strikers = self.calculatePositions('strikers');
@@ -51,6 +52,9 @@
 
                 back = self.calculatePositions('back');
                 console.log(back);
+
+                teamShape = self.calculateTeamShape();
+                console.log(teamShape);
             });
         }
         
@@ -93,18 +97,15 @@
 
         // Methods
         this.calculatePositions = function(position) {
-            var team = self.team.getData(),
-                exponent = self.exponent.getData();
+            var hasGoodPlayers = self.team.data[position].has.goodPlayer,
+                hasGoodPlayersInjured = self.team.data[position].has.goodPlayerInjured,
+                hasGoodPositionBench = self.team.data[position].has.goodPositionBench,
 
-            var hasGoodPlayers = team[position].has.goodPlayer,
-                hasGoodPlayersInjured = team[position].has.goodPlayerInjured,
-                hasGoodPositionBench = team[position].has.goodPositionBench,
+                levelGoodPlayers = self.team.data[position].level.goodPlayer,
+                levelGoodPositionBench = self.team.data[position].level.goodPositionBench,
 
-                levelGoodPlayers = team[position].level.goodPlayer,
-                levelGoodPositionBench = team[position].level.goodPositionBench,
-
-                expGoodPlayers = exponent[position].exp.goodPlayer,
-                expGoodBench = exponent[position].exp.goodPositionBench;
+                expGoodPlayers = self.exponent.data[position].exp.goodPlayer,
+                expGoodBench = self.exponent.data[position].exp.goodPositionBench;
 
             if(hasGoodPlayers && !hasGoodPlayersInjured) {
                 return _getGoodPlayerNotInjuredCalculate(hasGoodPositionBench, levelGoodPlayers, expGoodPlayers, levelGoodPositionBench, expGoodBench);
@@ -121,10 +122,16 @@
         };
 
         this.calculateTeamShape = function() {
-            var team = self.team.getData(),
-                exponent = self.exponent.getData();
+            var result = 1,
+                teamShape = self.team.data.teamShape,
+                hasChemistry = teamShape.has.chemistry,
+                levelChemistry = teamShape.level.chemistry,
+                expChemistry = teamShape.exp.chemistry;
 
-            var hasExperience = team.teamShape.has.
+            if(hasChemistry) {
+                result = levelChemistry * expChemistry;
+            }
+            return result;
         };
 
         this.calculateTeamExperience = function() {
