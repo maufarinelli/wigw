@@ -38,7 +38,8 @@
                 midfield,
                 goalkeeper, 
                 back,
-                teamShape;
+                teamShape,
+                teamExperience;
             
             $q.all(promises).then(function() {
                 strikers = self.calculatePositions('strikers');
@@ -55,6 +56,9 @@
 
                 teamShape = self.calculateTeamShape();
                 console.log(teamShape);
+
+                teamExperience = self.calculateTeamExperience();
+                console.log(teamExperience);
             });
         }
         
@@ -126,7 +130,7 @@
                 teamShape = self.team.data.teamShape,
                 hasChemistry = teamShape.has.chemistry,
                 levelChemistry = teamShape.level.chemistry,
-                expChemistry = teamShape.exp.chemistry;
+                expChemistry = self.exponent.data.teamShape.exp.chemistry;
 
             if(hasChemistry) {
                 result = levelChemistry * expChemistry;
@@ -135,6 +139,28 @@
         };
 
         this.calculateTeamExperience = function() {
+            var teamExperience = self.team.data.teamExperience,
+                expTeamExperience = self.exponent.data.teamExperience,
+
+                hasExperience = teamExperience.has.experience,
+                hasGoodBalance = teamExperience.has.goodBalanceExperienceYouth,
+                hasTooMuchOldPlayers = teamExperience.has.tooMuchOldPlayers,
+
+                levelExperience = teamExperience.level.experience,
+                levelGoodBalanceExperienceYouth = teamExperience.level.goodBalanceExperienceYouth,
+
+                expExperience = expTeamExperience.exp.experience,
+                expGoodBalanceExperienceYouth = expTeamExperience.exp.goodBalanceExperienceYouth;
+
+            if(hasExperience && hasGoodBalance) {
+                return levelExperience * expExperience + expGoodBalanceExperienceYouth * levelGoodBalanceExperienceYouth;
+            }
+            else if(hasExperience && hasTooMuchOldPlayers) {
+                return levelExperience * expExperience;
+            }
+            else {
+                return 1;
+            }
 
         };
 
