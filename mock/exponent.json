@@ -38,26 +38,27 @@
       "goodBalanceExperienceYouth": 5
     }
   },
-
-  "goodQuantityOfPlayers": 4,
-
-  "wonRegional": 2,
-  "wonLastYear": 2,
-  "howManyChampionshipWon": 1,
-
-  "changedCoachRecently": 2,
-  "coachLevel": 5,
-  "howManyChampionshipCoachWon": 3,
-
-  "solidPreSeason": 3,
+  "coach": {
+    "exp": {
+      "coachQuality": 5,
+      "coachWinningHistory": 3
+    }
+  },
+  "history": {
+    "exp": {
+      "wonRegional": 6,
+      "wonLastYear": 4,
+      "wonManyChampionships": 3
+    }
+  },
+  "general": {
+    "goodQuantityOfPlayers": 4,
+    "solidPreSeason": 3,
+    "playingOtherChampionship": 4,
+    "officialSupporterProgram": 3,
+    "strengthPlayingHome": 3,
+    "internalClubProblems": 3,
+    "paidWages": 4
+  }
   
-  "playingOtherChampionship": 4,
-  
-  "officialSupporterProgram": 3,
-
-  "strongPlayingHome": 3,
-  
-  "internalClubProblems": 3,
-
-  "paidWages": 4
 }

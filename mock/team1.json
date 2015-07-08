@@ -63,5 +63,47 @@
       "experience": 8,
       "goodBalanceExperienceYouth": 8
     }
+  },
+  "coach": {
+    "has": {
+      "changedCoachRecently": true
+    },
+    "level": {
+      "coachQuality": 8,
+      "coachWinningHistory": 6
+    }
+  },
+  "history": {
+    "has": {
+      "wonRegional": false,
+      "wonLastYear": false,
+      "wonManyChampionships": true
+    },
+    "level": {
+      "wonRegional": 6,
+      "wonLastYear": 4,
+      "wonManyChampionships": 3
+    }
+  },
+  "general": {
+    "has": {
+      "goodQuantityOfPlayers": 4,
+      "solidPreSeason": 3,
+      "playingOtherChampionship": 4,
+      "officialSupporterProgram": 3,
+      "strengthPlayingHome": 3,
+      "internalClubProblems": 3,
+      "paidWages": 4
+    },
+    "level": {
+      "goodQuantityOfPlayers": 4,
+      "solidPreSeason": 3,
+      "playingOtherChampionship": 4,
+      "officialSupporterProgram": 3,
+      "strengthPlayingHome": 3,
+      "internalClubProblems": 3,
+      "paidWages": 4
+    }
   }
+
 }

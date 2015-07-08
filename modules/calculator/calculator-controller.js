@@ -39,7 +39,9 @@
                 goalkeeper, 
                 back,
                 teamShape,
-                teamExperience;
+                teamExperience,
+                coach,
+                history;
             
             $q.all(promises).then(function() {
                 strikers = self.calculatePositions('strikers');
@@ -59,6 +61,12 @@
 
                 teamExperience = self.calculateTeamExperience();
                 console.log(teamExperience);
+
+                coach = self.calculateCoach();
+                console.log(coach);
+
+                history = self.calculateHistory(),
+                console.log(history);
             });
         }
         
@@ -162,6 +170,55 @@
                 return 1;
             }
 
+        };
+
+        this.calculateCoach = function() {
+            var teamCoach = self.team.data.coach,
+                expCoach = self.exponent.data.coach,
+
+                hasChangedCoachRecently = teamCoach.has.changedCoachRecently,
+
+                levelCoach = teamCoach.level.coachQuality,
+                levelCoachWinningHistory = teamCoach.level.coachWinningHistory,
+
+                expCoachQuality = expCoach.exp.coachQuality,
+                expCoachWinningHistory = expCoach.exp.coachWinningHistory;
+
+            if(hasChangedCoachRecently) {
+                levelCoach = levelCoach / 2;
+            }
+
+            return levelCoach * expCoachQuality + levelCoachWinningHistory * expCoachWinningHistory;
+        };
+
+        this.calculateHistory = function() {
+            var teamHistory = self.team.data.history,
+                expHistory = self.exponent.data.history,
+                result = 1,
+
+                hasWonRegional = teamHistory.has.wonRegional,
+                hasWonLastYear = teamHistory.has.wonLastYear,
+                hasWonManyChampionships = teamHistory.has.wonManyChampionships,
+
+                levelWonRegional = teamHistory.level.wonRegional,
+                levelWonLastYear = teamHistory.level.wonLastYear,
+                levelWonManyChampionships = teamHistory.level.wonManyChampionships,
+
+                expWonRegional = expHistory.exp.wonRegional,
+                expWonLastYear = expHistory.exp.wonLastYear,
+                expWonManyChampionships = expHistory.exp.wonManyChampionships;
+
+            if(hasWonRegional) {
+                result += levelWonRegional * expWonRegional;
+            }
+            if(hasWonLastYear) {
+                result += levelWonLastYear * expWonLastYear;
+            }
+            if(hasWonManyChampionships) {
+                result += levelWonManyChampionships * expWonManyChampionships;
+            }
+
+            return result;
         };
 
         initTeam('team1');
