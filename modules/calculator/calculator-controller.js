@@ -1,4 +1,4 @@
-(function(angular) {
+(function(angular, _) {
     'use strick'; 
     
     function CalculatorController($scope, $q, TeamComponent, ExponentComponent) {
@@ -34,39 +34,25 @@
         }
 
         function initCalculator() {
-            var strikers,
-                midfield,
-                goalkeeper, 
-                back,
-                teamShape,
-                teamExperience,
-                coach,
-                history;
-            
             $q.all(promises).then(function() {
-                strikers = self.calculatePositions('strikers');
-                console.log(strikers);
+                var calculation = {
+                    strikers: self.calculatePositions('strikers'),
+                    midfield: self.calculatePositions('midfield'),
+                    goalkeeper: self.calculatePositions('goalkeeper'),
+                    back: self.calculatePositions('back'),
+                    teamShape: self.calculateTeamShape(),
+                    teamExperience: self.calculateTeamExperience(),
+                    coach: self.calculateCoach(),
+                    history: self.calculateHistory(),
+                    generalGood: self.calculateGeneralGoodPoints(),
+                    generalBad: self.calculateGeneralBadPoints()
+                };
 
-                midfield = self.calculatePositions('midfield');
-                console.log(midfield);
+                calculation.total = _.reduce(calculation, function(total, n) {
+                    return total + n;
+                });
 
-                goalkeeper = self.calculatePositions('goalkeeper');
-                console.log(goalkeeper);
-
-                back = self.calculatePositions('back');
-                console.log(back);
-
-                teamShape = self.calculateTeamShape();
-                console.log(teamShape);
-
-                teamExperience = self.calculateTeamExperience();
-                console.log(teamExperience);
-
-                coach = self.calculateCoach();
-                console.log(coach);
-
-                history = self.calculateHistory(),
-                console.log(history);
+                return calculation;
             });
         }
         
@@ -135,13 +121,10 @@
 
         this.calculateTeamShape = function() {
             var result = 1,
-                teamShape = self.team.data.teamShape,
-                hasChemistry = teamShape.has.chemistry,
-                levelChemistry = teamShape.level.chemistry,
-                expChemistry = self.exponent.data.teamShape.exp.chemistry;
+                teamShape = self.team.data.teamShape;
 
-            if(hasChemistry) {
-                result = levelChemistry * expChemistry;
+            if(teamShape.has.chemistry) {
+                result = teamShape.level.chemistry * self.exponent.data.teamShape.exp.chemistry;
             }
             return result;
         };
@@ -151,19 +134,13 @@
                 expTeamExperience = self.exponent.data.teamExperience,
 
                 hasExperience = teamExperience.has.experience,
-                hasGoodBalance = teamExperience.has.goodBalanceExperienceYouth,
-                hasTooMuchOldPlayers = teamExperience.has.tooMuchOldPlayers,
-
                 levelExperience = teamExperience.level.experience,
-                levelGoodBalanceExperienceYouth = teamExperience.level.goodBalanceExperienceYouth,
+                expExperience = expTeamExperience.exp.experience;
 
-                expExperience = expTeamExperience.exp.experience,
-                expGoodBalanceExperienceYouth = expTeamExperience.exp.goodBalanceExperienceYouth;
-
-            if(hasExperience && hasGoodBalance) {
-                return levelExperience * expExperience + expGoodBalanceExperienceYouth * levelGoodBalanceExperienceYouth;
+            if(hasExperience && teamExperience.has.goodBalanceExperienceYouth) {
+                return levelExperience * expExperience + expTeamExperience.exp.goodBalanceExperienceYouth * teamExperience.level.goodBalanceExperienceYouth;
             }
-            else if(hasExperience && hasTooMuchOldPlayers) {
+            else if(hasExperience && teamExperience.has.tooMuchOldPlayers) {
                 return levelExperience * expExperience;
             }
             else {
@@ -174,50 +151,68 @@
 
         this.calculateCoach = function() {
             var teamCoach = self.team.data.coach,
-                expCoach = self.exponent.data.coach,
+                expCoach = self.exponent.data.coach;
 
-                hasChangedCoachRecently = teamCoach.has.changedCoachRecently,
-
-                levelCoach = teamCoach.level.coachQuality,
-                levelCoachWinningHistory = teamCoach.level.coachWinningHistory,
-
-                expCoachQuality = expCoach.exp.coachQuality,
-                expCoachWinningHistory = expCoach.exp.coachWinningHistory;
-
-            if(hasChangedCoachRecently) {
-                levelCoach = levelCoach / 2;
+            if(teamCoach.has.changedCoachRecently) {
+                teamCoach.level.coachQuality = teamCoach.level.coachQuality / 2;
             }
 
-            return levelCoach * expCoachQuality + levelCoachWinningHistory * expCoachWinningHistory;
+            return teamCoach.level.coachQuality * expCoach.exp.coachQuality + teamCoach.level.coachWinningHistory * expCoach.exp.coachWinningHistory;
         };
 
         this.calculateHistory = function() {
             var teamHistory = self.team.data.history,
                 expHistory = self.exponent.data.history,
-                result = 1,
+                result = 1;
 
-                hasWonRegional = teamHistory.has.wonRegional,
-                hasWonLastYear = teamHistory.has.wonLastYear,
-                hasWonManyChampionships = teamHistory.has.wonManyChampionships,
-
-                levelWonRegional = teamHistory.level.wonRegional,
-                levelWonLastYear = teamHistory.level.wonLastYear,
-                levelWonManyChampionships = teamHistory.level.wonManyChampionships,
-
-                expWonRegional = expHistory.exp.wonRegional,
-                expWonLastYear = expHistory.exp.wonLastYear,
-                expWonManyChampionships = expHistory.exp.wonManyChampionships;
-
-            if(hasWonRegional) {
-                result += levelWonRegional * expWonRegional;
+            if(teamHistory.has.wonRegional) {
+                result += teamHistory.level.wonRegional * expHistory.exp.wonRegional;
             }
-            if(hasWonLastYear) {
-                result += levelWonLastYear * expWonLastYear;
+            if(teamHistory.has.wonLastYear) {
+                result += teamHistory.level.wonLastYear * expHistory.exp.wonLastYear;
             }
-            if(hasWonManyChampionships) {
-                result += levelWonManyChampionships * expWonManyChampionships;
+            if(teamHistory.has.wonManyChampionships) {
+                result += teamHistory.level.wonManyChampionships * expHistory.exp.wonManyChampionships;
             }
 
+            return result;
+        };
+
+        this.calculateGeneralGoodPoints = function() {
+            var teamGeneralGood = self.team.data.generalGood,
+                expGeneralGood = self.exponent.data.generalGood,
+                result = 1;
+
+            if(teamGeneralGood.has.goodQuantityOfPlayers) {
+                result += teamGeneralGood.level.goodQuantityOfPlayers * expGeneralGood.exp.goodQuantityOfPlayers;
+            }
+            if(teamGeneralGood.has.solidPreSeason) {
+                result += teamGeneralGood.level.solidPreSeason * expGeneralGood.exp.solidPreSeason;
+            }
+            if(teamGeneralGood.has.officialSupporterProgram) {
+                result += teamGeneralGood.level.officialSupporterProgram * expGeneralGood.exp.officialSupporterProgram;
+            }
+            if(teamGeneralGood.has.strengthPlayingHome) {
+                result += teamGeneralGood.level.strengthPlayingHome * expGeneralGood.exp.strengthPlayingHome;
+            }
+
+            return result;
+        };
+
+        this.calculateGeneralBadPoints = function() {
+            var teamGeneralBad = self.team.data.generalBad,
+                expGeneralBad = self.exponent.data.generalBad,
+                result = -1;
+
+            if(teamGeneralBad.has.notPayingWagesOnTime) {
+                result -= teamGeneralBad.level.notPayingWagesOnTime * expGeneralBad.exp.notPayingWagesOnTime;
+            }
+            if(teamGeneralBad.has.playingOtherChampionship) {
+                result -= teamGeneralBad.level.playingOtherChampionship * expGeneralBad.exp.playingOtherChampionship;
+            }
+            if(teamGeneralBad.has.internalClubProblems) {
+                result -= teamGeneralBad.level.internalClubProblems * expGeneralBad.exp.internalClubProblems;
+            }
             return result;
         };
 
@@ -228,4 +223,4 @@
 
     angular.module('calculator')
         .controller('CalculatorController', CalculatorController);
-})(window.angular);
+})(window.angular, window._);

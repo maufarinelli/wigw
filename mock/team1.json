@@ -104,6 +104,32 @@
       "internalClubProblems": 3,
       "paidWages": 4
     }
+  },
+  "generalGood": {
+    "has": {
+      "goodQuantityOfPlayers": true,
+      "solidPreSeason": false,
+      "officialSupporterProgram": true,
+      "strengthPlayingHome": true
+    },
+    "level": {
+      "goodQuantityOfPlayers": 9,
+      "solidPreSeason": 5,
+      "officialSupporterProgram": 9,
+      "strengthPlayingHome": 8
+    }
+  },
+  "generalBad": {
+    "has": {
+      "notPayingWagesOnTime": false,
+      "playingOtherChampionship": true,
+      "internalClubProblems": false
+    },
+    "level": {
+      "notPayingWagesOnTime": 9,
+      "playingOtherChampionship": 7,
+      "internalClubProblems": 8
+    }
   }
 
 }

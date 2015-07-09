@@ -51,14 +51,21 @@
       "wonManyChampionships": 3
     }
   },
-  "general": {
-    "goodQuantityOfPlayers": 4,
-    "solidPreSeason": 3,
-    "playingOtherChampionship": 4,
-    "officialSupporterProgram": 3,
-    "strengthPlayingHome": 3,
-    "internalClubProblems": 3,
-    "paidWages": 4
+  "generalGood": {
+    "exp": {
+      "goodQuantityOfPlayers": 4,
+      "solidPreSeason": 3,
+      "officialSupporterProgram": 3,
+      "strengthPlayingHome": 3
+    }
+  },
+  "generalBad": {
+    "exp": {
+      "notPayingWagesOnTime": 4,
+      "playingOtherChampionship": 4,
+      "internalClubProblems": 3
+    }
   }
+
   
 }
