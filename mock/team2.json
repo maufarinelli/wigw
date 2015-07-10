@@ -2,13 +2,114 @@
   "name": "Time 2",
   "strikers": {
     "level": {
-      "goodStriker": 6,
-      "goodForwardBench": 4
+      "goodPlayer": 6,
+      "goodPositionBench": 6
     },
     "has": {
-      "goodStriker": true,
-      "goodStrikerInjured": false,
-      "goodForwardBench": false
+      "goodPlayer": true,
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
+    }
+  },
+  "midfield" : {
+    "level": {
+      "goodPlayer": 7,
+      "goodPositionBench": 5
+    },
+    "has": {
+      "goodPlayer": true,
+      "goodPlayerInjured": false,
+      "goodPositionBench": false
+    }
+  },
+  "goalkeeper": {
+    "level": {
+      "goodPlayer": 7,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayer": true,
+      "goodPlayerInjured": false,
+      "goodPositionBench": false
+    }
+  },
+  "back": {
+    "level": {
+      "goodPlayer": 8,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayer": true,
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
+    }
+  },
+  "teamShape": {
+    "has": {
+      "chemistry": true
+    },
+    "level": {
+      "chemistry": 5
+    }
+  },
+  "teamExperience": {
+    "has": {
+      "experience": true,
+      "goodBalanceExperienceYouth": true,
+      "tooMuchOldPlayers": false,
+      "tooMuchYoungPlayers": false
+    },
+    "level": {
+      "experience": 7,
+      "goodBalanceExperienceYouth": 7
+    }
+  },
+  "coach": {
+    "has": {
+      "changedCoachRecently": false
+    },
+    "level": {
+      "coachQuality": 8,
+      "coachWinningHistory": 8
+    }
+  },
+  "history": {
+    "has": {
+      "wonRegional": false,
+      "wonLastYear": false,
+      "wonManyChampionships": true
+    },
+    "level": {
+      "wonRegional": 6,
+      "wonLastYear": 4,
+      "wonManyChampionships": 5
+    }
+  },
+  "generalGood": {
+    "has": {
+      "goodQuantityOfPlayers": true,
+      "solidPreSeason": false,
+      "officialSupporterProgram": true,
+      "strengthPlayingHome": true
+    },
+    "level": {
+      "goodQuantityOfPlayers": 8,
+      "solidPreSeason": 5,
+      "officialSupporterProgram": 8,
+      "strengthPlayingHome": 8
+    }
+  },
+  "generalBad": {
+    "has": {
+      "notPayingWagesOnTime": true,
+      "playingOtherChampionship": false,
+      "internalClubProblems": true
+    },
+    "level": {
+      "notPayingWagesOnTime": 9,
+      "playingOtherChampionship": 7,
+      "internalClubProblems": 8
     }
   }
+
 }
