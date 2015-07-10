@@ -4,12 +4,14 @@
     function CalculatorComponent($q, TeamComponent, ExponentComponent) {
         var promises = [];
 
-        var Calculator = function() {
+        var Calculator = function(options) {
             // Properties
             this.team;
             this.exponent;
 
-            this.init();
+            this.initTeam(options.urlTeam);
+            this.initExponent(options.urlExponent);
+            this.initCalculator();
         };
 
         Calculator.prototype.initTeam = function(urlTeam) {
@@ -68,12 +70,6 @@
                 console.log(calculation);
                 return calculation;
             });
-        };
-
-        Calculator.prototype.init = function() {
-            this.initTeam('team1');
-            this.initExponent('exponent');
-            this.initCalculator();
         };
         
 
