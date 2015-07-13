@@ -1,5 +1,5 @@
 {
-  "name": "Time 1",
+  "name": "Palmeiras",
   "strikers": {
     "level": {
       "goodPlayer": 8,
@@ -110,6 +110,11 @@
       "playingOtherChampionship": 7,
       "internalClubProblems": 8
     }
+  },
+  "standings": {
+    "wins": 6,
+    "losses": 3,
+    "ties": 4,
+    "goesDifference": 11
   }
-
 }

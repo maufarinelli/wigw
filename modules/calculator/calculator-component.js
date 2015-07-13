@@ -60,12 +60,15 @@
                     coach: self.calculateCoach(),
                     history: self.calculateHistory(),
                     generalGood: self.calculateGeneralGoodPoints(),
-                    generalBad: self.calculateGeneralBadPoints()
+                    generalBad: self.calculateGeneralBadPoints(),
+                    standings: self.calculateStandings()
                 };
 
                 calculation.total = _.reduce(calculation, function(total, n) {
                     return total + n;
                 });
+
+                calculation.name = self.team.data.name;
 
                 console.log(calculation);
                 return calculation;
@@ -174,7 +177,7 @@
         Calculator.prototype.calculateHistory = function() {
             var teamHistory = this.team.data.history,
                 expHistory = this.exponent.data.history,
-                result = 1;
+                result = 0;
 
             if(teamHistory.has.wonRegional) {
                 result += teamHistory.level.wonRegional * expHistory.exp.wonRegional;
@@ -192,7 +195,7 @@
         Calculator.prototype.calculateGeneralGoodPoints = function() {
             var teamGeneralGood = this.team.data.generalGood,
                 expGeneralGood = this.exponent.data.generalGood,
-                result = 1;
+                result = 0;
 
             if(teamGeneralGood.has.goodQuantityOfPlayers) {
                 result += teamGeneralGood.level.goodQuantityOfPlayers * expGeneralGood.exp.goodQuantityOfPlayers;
@@ -213,7 +216,7 @@
         Calculator.prototype.calculateGeneralBadPoints = function() {
             var teamGeneralBad = this.team.data.generalBad,
                 expGeneralBad = this.exponent.data.generalBad,
-                result = -1;
+                result = 0;
 
             if(teamGeneralBad.has.notPayingWagesOnTime) {
                 result -= teamGeneralBad.level.notPayingWagesOnTime * expGeneralBad.exp.notPayingWagesOnTime;
@@ -225,6 +228,16 @@
                 result -= teamGeneralBad.level.internalClubProblems * expGeneralBad.exp.internalClubProblems;
             }
             return result;
+        };
+
+        Calculator.prototype.calculateStandings = function() {
+            var teamStandings = this.team.data.standings,
+                expStandings = this.exponent.data.standings.exp;
+
+            return (teamStandings.wins * expStandings.wins) +
+                (teamStandings.ties * expStandings.ties) -
+                (teamStandings.losses * expStandings.losses) +
+                (teamStandings.goesDifference * expStandings.goesDifference);
         };
 
         return Calculator;

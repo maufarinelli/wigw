@@ -26,5 +26,8 @@
     "karma-jasmine": "^0.1.5",
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-requirejs": "~0.2.1"
+  },
+  "dependencies": {
+    "progressindicator": "git://github.com/chrisgeo/progressindicator.git#7a5d87d"
   }
 }

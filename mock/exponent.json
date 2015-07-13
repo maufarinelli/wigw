@@ -46,8 +46,8 @@
   },
   "history": {
     "exp": {
-      "wonRegional": 6,
-      "wonLastYear": 4,
+      "wonRegional": 4,
+      "wonLastYear": 3,
       "wonManyChampionships": 3
     }
   },
@@ -65,7 +65,13 @@
       "playingOtherChampionship": 4,
       "internalClubProblems": 3
     }
+  },
+  "standings": {
+    "exp": {
+      "wins": 9,
+      "losses": 9,
+      "ties": 3,
+      "goesDifference": 2
+    }
   }
-
-  
 }

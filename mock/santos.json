@@ -1,0 +1,120 @@
+{
+  "name": "Santos",
+  "strikers": {
+    "level": {
+      "goodPlayer": 8,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayer": true,
+      "goodPlayerInjured": false,
+      "goodPositionBench": false
+    }
+  },
+  "midfield" : {
+    "level": {
+      "goodPlayer": 7,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayer": true,
+      "goodPlayerInjured": false,
+      "goodPositionBench": false
+    }
+  },
+  "goalkeeper": {
+    "level": {
+      "goodPlayer": 6,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayer": false,
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
+    }
+  },
+  "back": {
+    "level": {
+      "goodPlayer": 8,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayer": true,
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
+    }
+  },
+  "teamShape": {
+    "has": {
+      "chemistry": true
+    },
+    "level": {
+      "chemistry": 7
+    }
+  },
+  "teamExperience": {
+    "has": {
+      "experience": true,
+      "goodBalanceExperienceYouth": true,
+      "tooMuchOldPlayers": false,
+      "tooMuchYoungPlayers": false
+    },
+    "level": {
+      "experience": 7,
+      "goodBalanceExperienceYouth": 8
+    }
+  },
+  "coach": {
+    "has": {
+      "changedCoachRecently": true
+    },
+    "level": {
+      "coachQuality": 6,
+      "coachWinningHistory": 7
+    }
+  },
+  "history": {
+    "has": {
+      "wonRegional": true,
+      "wonLastYear": false,
+      "wonManyChampionships": true
+    },
+    "level": {
+      "wonRegional": 6,
+      "wonLastYear": 4,
+      "wonManyChampionships": 3
+    }
+  },
+  "generalGood": {
+    "has": {
+      "goodQuantityOfPlayers": true,
+      "solidPreSeason": true,
+      "officialSupporterProgram": true,
+      "strengthPlayingHome": true
+    },
+    "level": {
+      "goodQuantityOfPlayers": 8,
+      "solidPreSeason": 7,
+      "officialSupporterProgram": 7,
+      "strengthPlayingHome": 8
+    }
+  },
+  "generalBad": {
+    "has": {
+      "notPayingWagesOnTime": true,
+      "playingOtherChampionship": false,
+      "internalClubProblems": true
+    },
+    "level": {
+      "notPayingWagesOnTime": 9,
+      "playingOtherChampionship": 7,
+      "internalClubProblems": 8
+    }
+  },
+  "standings": {
+    "wins": 3,
+    "losses": 6,
+    "ties": 4,
+    "goesDifference": -4
+  }
+}

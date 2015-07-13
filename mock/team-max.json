@@ -1,9 +1,9 @@
 {
-  "name": "Time 2",
+  "name": "Time Max",
   "strikers": {
     "level": {
-      "goodPlayer": 6,
-      "goodPositionBench": 6
+      "goodPlayer": 10,
+      "goodPositionBench": 10
     },
     "has": {
       "goodPlayer": true,
@@ -13,30 +13,30 @@
   },
   "midfield" : {
     "level": {
-      "goodPlayer": 7,
-      "goodPositionBench": 5
+      "goodPlayer": 10,
+      "goodPositionBench": 10
     },
     "has": {
       "goodPlayer": true,
       "goodPlayerInjured": false,
-      "goodPositionBench": false
+      "goodPositionBench": true
     }
   },
   "goalkeeper": {
     "level": {
-      "goodPlayer": 7,
-      "goodPositionBench": 6
+      "goodPlayer": 10,
+      "goodPositionBench": 10
     },
     "has": {
       "goodPlayer": true,
       "goodPlayerInjured": false,
-      "goodPositionBench": false
+      "goodPositionBench": true
     }
   },
   "back": {
     "level": {
-      "goodPlayer": 8,
-      "goodPositionBench": 6
+      "goodPlayer": 10,
+      "goodPositionBench": 10
     },
     "has": {
       "goodPlayer": true,
@@ -49,7 +49,7 @@
       "chemistry": true
     },
     "level": {
-      "chemistry": 5
+      "chemistry": 10
     }
   },
   "teamExperience": {
@@ -60,56 +60,62 @@
       "tooMuchYoungPlayers": false
     },
     "level": {
-      "experience": 7,
-      "goodBalanceExperienceYouth": 7
+      "experience": 10,
+      "goodBalanceExperienceYouth": 10
     }
   },
   "coach": {
     "has": {
-      "changedCoachRecently": false
+      "changedCoachRecently": true
     },
     "level": {
-      "coachQuality": 8,
-      "coachWinningHistory": 8
+      "coachQuality": 10,
+      "coachWinningHistory": 10
     }
   },
   "history": {
     "has": {
-      "wonRegional": false,
-      "wonLastYear": false,
+      "wonRegional": true,
+      "wonLastYear": true,
       "wonManyChampionships": true
     },
     "level": {
-      "wonRegional": 6,
-      "wonLastYear": 4,
-      "wonManyChampionships": 5
+      "wonRegional": 10,
+      "wonLastYear": 10,
+      "wonManyChampionships": 10
     }
   },
   "generalGood": {
     "has": {
       "goodQuantityOfPlayers": true,
-      "solidPreSeason": false,
+      "solidPreSeason": true,
       "officialSupporterProgram": true,
       "strengthPlayingHome": true
     },
     "level": {
-      "goodQuantityOfPlayers": 8,
-      "solidPreSeason": 5,
-      "officialSupporterProgram": 8,
-      "strengthPlayingHome": 8
+      "goodQuantityOfPlayers": 10,
+      "solidPreSeason": 10,
+      "officialSupporterProgram": 10,
+      "strengthPlayingHome": 10
     }
   },
   "generalBad": {
     "has": {
-      "notPayingWagesOnTime": true,
+      "notPayingWagesOnTime": false,
       "playingOtherChampionship": false,
-      "internalClubProblems": true
+      "internalClubProblems": false
     },
     "level": {
-      "notPayingWagesOnTime": 9,
-      "playingOtherChampionship": 7,
-      "internalClubProblems": 8
+      "notPayingWagesOnTime": 1,
+      "playingOtherChampionship": 1,
+      "internalClubProblems": 1
     }
+  },
+  "standings": {
+    "wins": 10,
+    "losses": 0,
+    "ties": 0,
+    "goesDifference": 20
   }
 
 }
