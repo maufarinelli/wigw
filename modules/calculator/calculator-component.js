@@ -1,5 +1,5 @@
 (function(angular, _) {
-    'use strick'; 
+    'use strict';
     
     function CalculatorComponent($q, TeamComponent, ExponentComponent) {
         var promises = [];

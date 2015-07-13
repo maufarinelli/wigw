@@ -1,5 +1,5 @@
 (function(angular) {
-    'use strick';
+    'use strict';
     
     function TeamComponent($q, teamService) {
         var self;

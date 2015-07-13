@@ -1,5 +1,5 @@
 (function(angular) {
-    'use strick';
+    'use strict';
     
     function ExponentController($scope, $q, exponentService) {
         var self = this,

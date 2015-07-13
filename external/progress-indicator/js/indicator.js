@@ -81,7 +81,7 @@ indicator.directive('indicatorWidget', [function (){
                 };
             }
         },
-        templateUrl: 'indicator.html',
+        templateUrl: 'external/progress-indicator/templates/indicator.html',
         link: function(scope, element, attrs){
             scope.actual_formatted = (scope.actual * 100).toFixed(0);
         },

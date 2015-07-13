@@ -1,9 +1,10 @@
 (function(angular) {
-    'use strick';
+    'use strict';
 
     angular.module('dashboard', [
         'team',
         'exponent',
-        'calculator'
+        'calculator',
+        'indicator'
     ]);
 })(window.angular);

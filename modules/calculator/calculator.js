@@ -1,5 +1,5 @@
 (function(angular) {
-    'use strick'; 
+    'use strict';
     
     angular.module('calculator', [
         'team', 
