@@ -1,10 +1,17 @@
-<svg class="indicator-circle" 
-    width="100" height="100" 
-    version="1.1" 
-    xmlns="http://www.w3.org/2000/svg" 
-    data-expected="73"
-    data-actual="55">
-    <circle cx="50" cy="50" r="50"></circle>
-    <text class="progress-text actual" text-anchor="middle" alignment-baseline="middle" dx="50%" dy="50%">{{ actual }}%</text>
-    <text class="progress-text" text-anchor="middle" alignment-baseline="middle" dx="50%" dy="67%">Progress</text>
+<svg class="indicator-circle"
+     width="150" height="150"
+     version="1.1"
+     xmlns="http://www.w3.org/2000/svg">
+    <g>
+        <circle cx="50%" cy="50%" r="45" />
+        <text class="progress-text actual" text-anchor="middle" alignment-baseline="middle" dx="50%" dy="50%">
+            <tspan class="actual">{{ actual_formatted }}</tspan>
+            <tspan class="percent">%</tspan>
+        </text>
+        <text class="progress-text" text-anchor="middle" alignment-baseline="middle" dx="50%" dy="60%">Progress</text>
+    </g>
+    <g path-group>
+        <path class="progress-bar inner-bar normal" stroke-linejoin="round" inner-path />
+        <path class="progress-bar outer-bar" stroke-linejoin="round" outer-path />
+    </g>
 </svg>

@@ -1,3 +1,5 @@
-<div class="widget-container"
-     data-expected="0.90"
-     data-actual="0.25" indicator-widget></div>
+<div ng-if="ready">
+    <div class="widget-container"
+         data-expected="{{dashboard.maximum}}"
+         data-actual="{{dashboard.palmeiras}}" indicator-widget></div>
+</div>

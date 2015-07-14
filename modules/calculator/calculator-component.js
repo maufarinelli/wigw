@@ -11,7 +11,7 @@
 
             this.initTeam(options.urlTeam);
             this.initExponent(options.urlExponent);
-            this.initCalculator();
+            this.calculation = this.initCalculator();
         };
 
         Calculator.prototype.initTeam = function(urlTeam) {
@@ -49,30 +49,30 @@
         Calculator.prototype.initCalculator = function() {
             var self = this;
 
-            $q.all(promises).then(function() {
-                var calculation = {
-                    strikers: self.calculatePositions('strikers'),
-                    midfield: self.calculatePositions('midfield'),
-                    goalkeeper: self.calculatePositions('goalkeeper'),
-                    back: self.calculatePositions('back'),
-                    teamShape: self.calculateTeamShape(),
-                    teamExperience: self.calculateTeamExperience(),
-                    coach: self.calculateCoach(),
-                    history: self.calculateHistory(),
-                    generalGood: self.calculateGeneralGoodPoints(),
-                    generalBad: self.calculateGeneralBadPoints(),
-                    standings: self.calculateStandings()
-                };
+            return $q.all(promises)
+                .then(function() {
+                    var calculation = {
+                        strikers: self.calculatePositions('strikers'),
+                        midfield: self.calculatePositions('midfield'),
+                        goalkeeper: self.calculatePositions('goalkeeper'),
+                        back: self.calculatePositions('back'),
+                        teamShape: self.calculateTeamShape(),
+                        teamExperience: self.calculateTeamExperience(),
+                        coach: self.calculateCoach(),
+                        history: self.calculateHistory(),
+                        generalGood: self.calculateGeneralGoodPoints(),
+                        generalBad: self.calculateGeneralBadPoints(),
+                        standings: self.calculateStandings()
+                    };
 
-                calculation.total = _.reduce(calculation, function(total, n) {
-                    return total + n;
+                    calculation.total = _.reduce(calculation, function(total, n) {
+                        return total + n;
+                    });
+
+                    calculation.name = self.team.data.name;
+
+                    return calculation;
                 });
-
-                calculation.name = self.team.data.name;
-
-                console.log(calculation);
-                return calculation;
-            });
         };
         
 

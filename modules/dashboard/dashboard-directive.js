@@ -6,8 +6,7 @@
             restrict: 'E',
             templateUrl: 'modules/dashboard/dashboard.html',
             controllerAs: 'dashboard',
-            controller: 'DashboardController',
-            transclude: true
+            controller: 'DashboardController'
         }
     }
 
