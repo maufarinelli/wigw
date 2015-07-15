@@ -19,12 +19,6 @@
                         valueSibling.textContent = event.currentTarget.value;
                     });
                 });
-                    
-                
-
-                /*range.on('input', function(){
-                    value.innerHtml = this.value;
-                });*/
             }
         }
     }
