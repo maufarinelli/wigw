@@ -45,30 +45,6 @@
             });
         });
 
-        
-
-
-
-        /*
-        var corinthians = {
-            urlTeam: 'corinthians',
-            urlExponent: 'exponent'
-        };
-        var corinthians = new CalculatorComponent(corinthians);
-
-        var saopaulo = {
-            urlTeam: 'saopaulo',
-            urlExponent: 'exponent'
-        };
-        var saopaulo = new CalculatorComponent(saopaulo);
-
-        var santos = {
-            urlTeam: 'santos',
-            urlExponent: 'exponent'
-        };
-        var santos = new CalculatorComponent(santos);
-        */
-
     }
 
     angular.module('dashboard')
