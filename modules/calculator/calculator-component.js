@@ -5,12 +5,11 @@
         var promises = [];
 
         var Calculator = function(options) {
-            // Properties
             this.team;
-            this.exponent;
+            this.exponent = options.exponent;
 
             this.initTeam(options.urlTeam);
-            this.initExponent(options.urlExponent);
+            
             this.calculation = this.initCalculator();
         };
 
@@ -28,22 +27,6 @@
             });
 
             promises.push(teamPromise);
-        };
-
-        Calculator.prototype.initExponent = function(urlExponent) {
-            var self = this;
-
-            var configExp = {
-                    url: urlExponent
-                };
-
-            this.exponent = new ExponentComponent(configExp);
-
-            var exponentPromise = this.exponent.promise.then(function(result) {
-                self.exponent.setData(result.data);
-            });
-
-            promises.push(exponentPromise);
         };
 
         Calculator.prototype.initCalculator = function() {

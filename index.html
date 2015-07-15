@@ -2,7 +2,9 @@
 <html>
 <head>
     <title>WISG</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="external/progress-indicator/css/indicator.css" />
+    <link rel="stylesheet" href="css/styles.css" />
     <script src="node_modules/lodash/index.js"></script>
     <script src="node_modules/angular/angular.min.js"></script>
 
@@ -25,6 +27,12 @@
     <script src="modules/dashboard/dashboard-directive.js"></script>
 </head>
 <body ng-app="dashboard">
-    <dashboard-container></dashboard-container>
+    <main class="container">
+        <div class="row">
+            <section class="teams col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                <dashboard-container></dashboard-container>
+            </section>
+        </div>
+    </main>
 </body>
 </html>

@@ -60,7 +60,6 @@ indicator.directive('indicatorWidget', [function (){
                 var end = findDegress(value),
                     arcValues = getArcValues(index, radius, spacing);
 
-
                 return {
                     innerRadius: arcValues.innerRadius,
                     outerRadius: arcValues.outerRadius,
@@ -83,7 +82,7 @@ indicator.directive('indicatorWidget', [function (){
         },
         templateUrl: 'external/progress-indicator/templates/indicator.html',
         link: function(scope, element, attrs){
-            scope.actual_formatted = (scope.actual * 100).toFixed(0);
+            scope.actual_formatted = (scope.actual * 1000).toFixed(0);
         },
         scope: {
             actual: '@',
