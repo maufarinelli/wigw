@@ -1,3 +1,6 @@
+// From Chris George
+// https://github.com/chrisgeo/progressindicator
+
 var indicator = angular.module('indicator', []);
 
 

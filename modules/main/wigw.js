@@ -7,11 +7,12 @@
         'exponent',
         'calculator',
         'indicator',
-        'dashboard'
+        'dashboard',
+        'teamboard'
     ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/dashboard', {
-            templateUrl: 'templates/gameboard.html'
+            templateUrl: 'templates/home.html'
         });
         $routeProvider.when('/gameboard', {
             templateUrl: 'templates/gameboard.html'
