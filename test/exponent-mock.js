@@ -1,46 +1,79 @@
 (function() {
     window.exponentMock = {
-      "won-last-year": 2,
-      "team-in-shaping": 4,
-      "team-has-chemistry": 5,
-      "won-regional": 2,
       "strikers": {
-        "has-good-striker": 4,
-        "good-striker-injured": 3,
-        "has-good-forward-bench": 3,
-        "good-quantity-of-forward": 2
+        "exp": {
+          "goodPlayer": 4,
+          "goodPlayerInjured": 4,
+          "goodPositionBench": 3
+        }
       },
-      "middlefield" : {
-        "has-good-middlefield": 3,
-        "good-middlefield-injured": 3,
-        "has-good-middlefield-bench": 3,
-        "good-quantity-of-middlefield": 2
+      "midfield" : {
+        "exp": {
+          "goodPlayer": 3,
+          "goodPlayerInjured": 3,
+          "goodPositionBench": 3
+        }
       },
       "goalkeeper": {
-        "has-good-goalkeeper": 3,
-        "good-goalkeepper-injured": 3,
-        "has-good-goalkeepper-bench": 3,
-        "good-quantity-of-goalkeepper": 2
+        "exp": {
+          "goodPlayer": 3,
+          "goodPlayerInjured": 3,
+          "goodPositionBench": 3
+        }
       },
-      "defense-payers": {
-        "has-good-back-duo": 3,
-        "good-back-duo-injured": 3,
-        "has-good-back-bench": 3,
-        "good-quantity-of-defense-payers": 2
+      "back": {
+        "exp": {
+          "goodPlayer": 3,
+          "goodPlayerInjured": 3,
+          "goodPositionBench": 3
+        }
       },
-      "changed-coach-recently": 2,
-      "solid pre-season": 3,
-      "coach-level": 5,
-      "how-many-championship-won": 1,
-      "how-many-championship-coach-won": 3,
-      "playing-other-championship": 4,
-      "good-quantity-of-players": 4,
-      "experienced-team": 4,
-      "good-balance-experience-youth": 5,
-      "team-with-too-much-young-player": 4,
-      "official-supporter-program": 3,
-      "strong-playing-home": 3,
-      "internal-club-problems": 3,
-      "paid-wages": 4
+      "teamShape": {
+        "exp": {
+          "chemistry": 5
+        }
+      },
+      "teamExperience": {
+        "exp": {
+          "experience": 4,
+          "goodBalanceExperienceYouth": 5
+        }
+      },
+      "coach": {
+        "exp": {
+          "coachQuality": 5,
+          "coachWinningHistory": 3
+        }
+      },
+      "history": {
+        "exp": {
+          "wonRegional": 4,
+          "wonLastYear": 3,
+          "wonManyChampionships": 3
+        }
+      },
+      "generalGood": {
+        "exp": {
+          "goodQuantityOfPlayers": 4,
+          "solidPreSeason": 3,
+          "officialSupporterProgram": 3,
+          "strengthPlayingHome": 3
+        }
+      },
+      "generalBad": {
+        "exp": {
+          "notPayingWagesOnTime": 4,
+          "playingOtherChampionship": 4,
+          "internalClubProblems": 3
+        }
+      },
+      "standings": {
+        "exp": {
+          "wins": 9,
+          "losses": 9,
+          "ties": 3,
+          "goesDifference": 2
+        }
+      }
     };
 })();
