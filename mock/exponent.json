@@ -1,28 +1,42 @@
 {
   "strikers": {
     "exp": {
-      "goodPlayer": 4,
+      "goodPlayers": 4,
       "goodPlayerInjured": 4,
       "goodPositionBench": 3
     }
   },
-  "midfield" : {
+  "attackingMidfield" : {
     "exp": {
-      "goodPlayer": 3,
+      "goodPlayers": 3,
+      "goodPlayerInjured": 3,
+      "goodPositionBench": 3
+    }
+  },
+  "defensiveMidfield" : {
+    "exp": {
+      "goodPlayers": 3,
       "goodPlayerInjured": 3,
       "goodPositionBench": 3
     }
   },
   "goalkeeper": {
     "exp": {
-      "goodPlayer": 3,
+      "goodPlayers": 3,
       "goodPlayerInjured": 3,
       "goodPositionBench": 3
     }
   },
-  "back": {
+  "centralBack": {
     "exp": {
-      "goodPlayer": 3,
+      "goodPlayers": 3,
+      "goodPlayerInjured": 3,
+      "goodPositionBench": 3
+    }
+  },
+  "fullBack": {
+    "exp": {
+      "goodPlayers": 3,
       "goodPlayerInjured": 3,
       "goodPositionBench": 3
     }

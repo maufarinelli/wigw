@@ -2,46 +2,62 @@
   "name": "Sao Paulo",
   "strikers": {
     "level": {
-      "goodPlayer": 7,
-      "goodPositionBench": 6
+      "goodPlayers": 7,
+      "goodPositionBench": 7
     },
     "has": {
-      "goodPlayer": true,
-      "goodPlayerInjured": false,
+      "goodPlayerInjured": true,
       "goodPositionBench": true
     }
   },
-  "midfield" : {
+  "attackingMidfield" : {
     "level": {
-      "goodPlayer": 7,
-      "goodPositionBench": 4
+      "goodPlayers": 7,
+      "goodPositionBench": 5
     },
     "has": {
-      "goodPlayer": true,
       "goodPlayerInjured": false,
       "goodPositionBench": false
+    }
+  },
+  "defensiveMidfield" : {
+    "level": {
+      "goodPlayers": 6,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
     }
   },
   "goalkeeper": {
     "level": {
-      "goodPlayer": 6,
+      "goodPlayers": 6,
       "goodPositionBench": 6
     },
     "has": {
-      "goodPlayer": true,
       "goodPlayerInjured": false,
       "goodPositionBench": true
     }
   },
-  "back": {
+  "centralBack": {
     "level": {
-      "goodPlayer": 6,
+      "goodPlayers": 7,
       "goodPositionBench": 6
     },
     "has": {
-      "goodPlayer": false,
       "goodPlayerInjured": false,
-      "goodPositionBench": false
+      "goodPositionBench": true
+    }
+  },
+  "fullBack": {
+    "level": {
+      "goodPlayers": 7,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
     }
   },
   "teamShape": {

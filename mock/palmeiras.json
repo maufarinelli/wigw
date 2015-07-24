@@ -2,44 +2,60 @@
   "name": "Palmeiras",
   "strikers": {
     "level": {
-      "goodPlayer": 8,
+      "goodPlayers": 8,
       "goodPositionBench": 6
     },
     "has": {
-      "goodPlayer": true,
       "goodPlayerInjured": false,
       "goodPositionBench": true
     }
   },
-  "midfield" : {
+  "attackingMidfield" : {
     "level": {
-      "goodPlayer": 7,
+      "goodPlayers": 7,
       "goodPositionBench": 6
     },
     "has": {
-      "goodPlayer": true,
       "goodPlayerInjured": false,
       "goodPositionBench": false
     }
   },
-  "goalkeeper": {
+  "defensiveMidfield" : {
     "level": {
-      "goodPlayer": 8,
-      "goodPositionBench": 6
+      "goodPlayers": 8,
+      "goodPositionBench": 7
     },
     "has": {
-      "goodPlayer": true,
       "goodPlayerInjured": false,
       "goodPositionBench": true
     }
   },
-  "back": {
+  "goalkeeper": {
     "level": {
-      "goodPlayer": 6,
+      "goodPlayers": 8,
       "goodPositionBench": 6
     },
     "has": {
-      "goodPlayer": false,
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
+    }
+  },
+  "centralBack": {
+    "level": {
+      "goodPlayers": 6,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
+    }
+  },
+  "fullBack": {
+    "level": {
+      "goodPlayers": 8,
+      "goodPositionBench": 7
+    },
+    "has": {
       "goodPlayerInjured": false,
       "goodPositionBench": true
     }

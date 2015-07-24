@@ -2,44 +2,60 @@
   "name": "Corinthians",
   "strikers": {
     "level": {
-      "goodPlayer": 6,
+      "goodPlayers": 7,
       "goodPositionBench": 6
     },
     "has": {
-      "goodPlayer": true,
       "goodPlayerInjured": false,
       "goodPositionBench": true
     }
   },
-  "midfield" : {
+  "attackingMidfield" : {
     "level": {
-      "goodPlayer": 7,
+      "goodPlayers": 7,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayerInjured": false,
+      "goodPositionBench": false
+    }
+  },
+  "defensiveMidfield" : {
+    "level": {
+      "goodPlayers": 6,
       "goodPositionBench": 5
     },
     "has": {
-      "goodPlayer": true,
       "goodPlayerInjured": false,
-      "goodPositionBench": false
+      "goodPositionBench": true
     }
   },
   "goalkeeper": {
     "level": {
-      "goodPlayer": 7,
+      "goodPlayers": 7,
       "goodPositionBench": 6
     },
     "has": {
-      "goodPlayer": true,
-      "goodPlayerInjured": false,
-      "goodPositionBench": false
+      "goodPlayerInjured": true,
+      "goodPositionBench": true
     }
   },
-  "back": {
+  "centralBack": {
     "level": {
-      "goodPlayer": 8,
+      "goodPlayers": 8,
       "goodPositionBench": 6
     },
     "has": {
-      "goodPlayer": true,
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
+    }
+  },
+  "fullBack": {
+    "level": {
+      "goodPlayers": 7,
+      "goodPositionBench": 6
+    },
+    "has": {
       "goodPlayerInjured": false,
       "goodPositionBench": true
     }

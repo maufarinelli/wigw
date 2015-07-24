@@ -36,9 +36,11 @@
                 .then(function() {
                     var calculation = {
                         strikers: self.calculatePositions('strikers'),
-                        midfield: self.calculatePositions('midfield'),
+                        attackingMidfield: self.calculatePositions('attackingMidfield'),
+                        defensiveMidfield: self.calculatePositions('defensiveMidfield'),
                         goalkeeper: self.calculatePositions('goalkeeper'),
-                        back: self.calculatePositions('back'),
+                        centralBack: self.calculatePositions('centralBack'),
+                        fullBack: self.calculatePositions('fullBack'),
                         teamShape: self.calculateTeamShape(),
                         teamExperience: self.calculateTeamExperience(),
                         coach: self.calculateCoach(),
@@ -93,20 +95,19 @@
 
         // Methods
         Calculator.prototype.calculatePositions = function(position) {
-            var hasGoodPlayers = this.team.data[position].has.goodPlayer,
-                hasGoodPlayersInjured = this.team.data[position].has.goodPlayerInjured,
+            var hasGoodPlayersInjured = this.team.data[position].has.goodPlayerInjured,
                 hasGoodPositionBench = this.team.data[position].has.goodPositionBench,
 
-                levelGoodPlayers = this.team.data[position].level.goodPlayer,
+                levelGoodPlayers = this.team.data[position].level.goodPlayers,
                 levelGoodPositionBench = this.team.data[position].level.goodPositionBench,
 
-                expGoodPlayers = this.exponent.data[position].exp.goodPlayer,
+                expGoodPlayers = this.exponent.data[position].exp.goodPlayers,
                 expGoodBench = this.exponent.data[position].exp.goodPositionBench;
 
-            if(hasGoodPlayers && !hasGoodPlayersInjured) {
+            if(!hasGoodPlayersInjured) {
                 return _getGoodPlayerNotInjuredCalculate(hasGoodPositionBench, levelGoodPlayers, expGoodPlayers, levelGoodPositionBench, expGoodBench);
             }
-            else if(hasGoodPlayers && hasGoodPlayersInjured) {
+            else if(hasGoodPlayersInjured) {
                 return _getGoodPlayerInjuredCalculate(hasGoodPositionBench, levelGoodPositionBench, expGoodBench);
             }
             else if(hasGoodPositionBench){
