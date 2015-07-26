@@ -1,0 +1,28 @@
+<h2 ng-bind="::position.text.title"></h2>
+<div class="form-group">
+    <label for="level-strikers" class="control-label" ng-bind="::position.text.level"></label>
+    <div class="range-slider">
+        <input type="range" class="input-range form-control" id="level-strikers" min="1" max="10" ng-value="5" ng-model="position.model.level">
+        <span class="range-value"></span>
+    </div>
+</div>
+
+<div class="checkbox">
+    <label for="">
+        <input type="checkbox" value="" ng-model="position.model.injured">
+        {{::position.text.injured}}
+    </label>
+</div>
+<div class="checkbox">
+    <label for="">
+        <input type="checkbox" value="" ng-model="position.model.hasBench">
+        {{::position.text.hasBench}}
+    </label>
+</div>
+<div class="form-group">
+    <label for="level-bench-strikers" class="control-label" ng-bind="::position.text.levelBench"></label>
+    <div class="range-slider">
+        <input type="range" class="input-range form-control" id="level-bench-strikers" min="1" max="10" value="1" ng-model="position.model.benchLevel" ng-disabled="!position.model.hasBench">
+        <span class="range-value" ng-class="{'disabled': !position.model.hasBench}"></span>
+    </div>
+</div>

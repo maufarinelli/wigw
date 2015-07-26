@@ -9,7 +9,6 @@
                 'teamboard.striker.injured': 'Melhor atacante esta machucado?',
                 'teamboard.striker.has.bench': 'Tem bons atacantes na reserva que podem manter um bom nível no ataque?',
                 'teamboard.striker.level.bench': 'Nível dos atacantes reservas :'
-
             };
         });
 })(window.angular);
