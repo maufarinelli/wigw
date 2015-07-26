@@ -35,6 +35,10 @@
     &:active::-webkit-slider-thumb {
       background: #e06161;
     }
+
+    &:disabled {
+      opacity: 0.5;
+    }
     
     &::-moz-range-thumb {
       width:20px;
@@ -80,6 +84,10 @@
       border-right: 7px solid #353535;
       border-bottom: 7px solid transparent;
       content: '';
+    }
+
+    &.disabled {
+      opacity: 0.5;
     }
   }
 }

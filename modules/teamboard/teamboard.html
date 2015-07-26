@@ -1,34 +1,5 @@
-<form name="teamboard" novalidate>
+<form name="teamboard" id="teamboard" novalidate>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <fieldset>
-            <h2>Ataque</h2>
-            <div class="form-group">
-                <label for="level-strikers" class="control-label">Nível dos atacante titulares :</label>
-                <div class="range-slider">
-                    <input type="range" class="input-range form-control" id="level-strikers" min="1" max="10" value="5">
-                    <span class="range-value"></span>
-                </div>
-            </div>
-
-            <div class="checkbox">
-                <label for="">
-                    <input type="checkbox" value="">
-                    Melhor atacante esta machucado?
-                </label>
-            </div>
-            <div class="checkbox">
-                <label for="">
-                    <input type="checkbox" value="">
-                    Tem bons atacantes na reserva que podem manter um bom nível no ataque? 
-                </label>
-            </div>
-            <div class="form-group">
-                <label for="level-bench-strikers" class="control-label">Nível dos atacantes reservas :</label>
-                <div class="range-slider">
-                    <input type="range" class="input-range form-control" id="level-bench-strikers" min="1" max="10" value="5">
-                    <span class="range-value"></span>
-                </div>
-            </div>
-        </fieldset>
+        <fieldset ng-repeat="position in positions" ng-include="teamboardCtrl.templates['position']" onload="load()"></fieldset>
     </div>
 </form>

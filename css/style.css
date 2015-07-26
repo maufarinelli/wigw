@@ -26,6 +26,9 @@
 .range-slider .input-range:active::-webkit-slider-thumb {
   background: #e06161;
 }
+.range-slider .input-range:disabled {
+  opacity: 0.5;
+}
 .range-slider .input-range::-moz-range-thumb {
   width: 20px;
   height: 20px;
@@ -65,4 +68,7 @@
   border-right: 7px solid #353535;
   border-bottom: 7px solid transparent;
   content: '';
+}
+.range-slider .range-value.disabled {
+  opacity: 0.5;
 }
