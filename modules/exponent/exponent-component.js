@@ -2,11 +2,12 @@
     'use strict';
 
     function ExponentComponent(exponentService) {
-        var self;
+        var self,
+            data;
 
         var Exponent = function(options) {
             self = this;
-            this.data;
+
             this.promise = this.getPromise(options);
         };
 
@@ -14,12 +15,12 @@
             return exponentService.getExponent(options.url);
         };
 
-        Exponent.prototype.setData = function(data) {
-            this.data = data;
+        Exponent.prototype.setData = function(information) {
+            data = information;
         };
 
         Exponent.prototype.getData = function() {
-            return this.data;
+            return data;
         };
 
         return Exponent;

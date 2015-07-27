@@ -4,12 +4,17 @@
     function exponentService($http) {
         this.getExponent = function(url) {
             return $http.get('/mock/' + url + '.json')
-                .success(function(data, status, headers, config) {
+                .success(function(data) {
                     return data;
                 }).
                 error(function(data, status, headers, config) {
-                    return data;
-                });
+                                            console.log(data);
+                     return {
+                         data: data,
+                         status: status,
+                         message:'Exponent data was not found'
+                     };
+                 });
         };
     }
 

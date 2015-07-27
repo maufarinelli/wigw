@@ -9,7 +9,7 @@
             return self.exponent.promise.then(function(result) {
                 self.exponent.setData(result.data);
             });
-        };
+        }
 
         $scope.ready = false;
 

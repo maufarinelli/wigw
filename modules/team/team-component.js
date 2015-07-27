@@ -1,7 +1,7 @@
 (function(angular) {
     'use strict';
     
-    function TeamComponent($q, teamService) {
+    function TeamComponent(teamService) {
         var self;
 
         var Team = function(options) {

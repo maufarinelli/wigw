@@ -15,12 +15,26 @@
             var json;
 
             $httpBackend.expectGET('/mock/exponent.json').respond(exponentMock);
-            service.getExponent().then(function(res) {
+            service.getExponent('exponent').then(function(res) {
                 json = res;
             });
             $httpBackend.flush();
             
             expect(json.data).toEqual(exponentMock);
+        });
+
+        it('getExponent method should throw an error with something unexpected happens', function() {
+            var response;
+
+            $httpBackend.expectGET('/mock/exponent.json').respond(500, {});
+            service.getExponent('exponent').then(function() {
+            }, function(reason) {
+                response = reason;
+            });
+            $httpBackend.flush();
+
+            expect(response.data).toEqual({});
+            expect(response.status).toEqual(500);
         });
     });
 
