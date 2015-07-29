@@ -1,25 +1,20 @@
 (function(angular) {
     'use strict';
-    
-    function TeamComponent(teamService) {
-        var self;
+
+    function TeamComponent($http) {
 
         var Team = function(options) {
-            self = this;
-            this.data;
-            this.promise = this.getPromise(options);
-        };
-
-        Team.prototype.getPromise = function(options) {
-            return teamService.getTeamData(options.url);
-        };
-
-        Team.prototype.setData = function(data) {
-            this.data = data;
-        };
-
-        Team.prototype.getData = function() {
-            return this.data;
+            return $http.get('/mock/' + options.url + '.json')
+                .success(function(data) {
+                             return data;
+                         })
+                .error(function(data, status) {
+                           return {
+                               data   : data,
+                               status : status,
+                               message: 'Team data was not found'
+                           };
+                       });
         };
 
         return Team;

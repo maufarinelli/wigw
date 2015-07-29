@@ -1,60 +1,52 @@
 (function(angular, _) {
     'use strict';
     
-    function CalculatorComponent($q, TeamComponent) {
-        var promises = [];
+    function CalculatorComponent(TeamComponent) {
+        var self;
 
         var Calculator = function(options) {
-            this.team;
+            self = this;
+
             this.exponent = options.exponent;
+            this.team;
 
             this.initTeam(options.urlTeam);
-            
             this.calculation = this.initCalculator();
         };
 
         Calculator.prototype.initTeam = function(urlTeam) {
-            var self = this;
-
             var configTeam = {
                     url: urlTeam
                 };
 
-            this.team = new TeamComponent(configTeam);
-
-            var teamPromise = this.team.promise.then(function(result) {
-                self.team.setData(result.data);
-            });
-
-            promises.push(teamPromise);
+            self.team = new TeamComponent(configTeam);
         };
 
         Calculator.prototype.initCalculator = function() {
             var self = this;
 
-            return $q.all(promises)
-                .then(function() {
+            return self.team.then(function(team) {
                     var calculation = {
-                        strikers: self.calculatePositions('strikers'),
-                        attackingMidfield: self.calculatePositions('attackingMidfield'),
-                        defensiveMidfield: self.calculatePositions('defensiveMidfield'),
-                        goalkeeper: self.calculatePositions('goalkeeper'),
-                        centralBack: self.calculatePositions('centralBack'),
-                        fullBack: self.calculatePositions('fullBack'),
-                        teamShape: self.calculateTeamShape(),
-                        teamExperience: self.calculateTeamExperience(),
-                        coach: self.calculateCoach(),
-                        history: self.calculateHistory(),
-                        generalGood: self.calculateGeneralGoodPoints(),
-                        generalBad: self.calculateGeneralBadPoints(),
-                        standings: self.calculateStandings()
+                        strikers: self.calculatePositions('strikers', team.data),
+                        attackingMidfield: self.calculatePositions('attackingMidfield', team.data),
+                        defensiveMidfield: self.calculatePositions('defensiveMidfield', team.data),
+                        goalkeeper: self.calculatePositions('goalkeeper', team.data),
+                        centralBack: self.calculatePositions('centralBack', team.data),
+                        fullBack: self.calculatePositions('fullBack', team.data),
+                        teamShape: self.calculateTeamShape(team.data),
+                        teamExperience: self.calculateTeamExperience(team.data),
+                        coach: self.calculateCoach(team.data),
+                        history: self.calculateHistory(team.data),
+                        generalGood: self.calculateGeneralGoodPoints(team.data),
+                        generalBad: self.calculateGeneralBadPoints(team.data),
+                        standings: self.calculateStandings(team.data)
                     };
 
                     calculation.total = _.reduce(calculation, function(total, n) {
                         return total + n;
                     });
 
-                    calculation.name = self.team.data.name;
+                    calculation.name = team.data.name;
 
                     return calculation;
                 });
@@ -94,12 +86,12 @@
         }
 
         // Methods
-        Calculator.prototype.calculatePositions = function(position) {
-            var hasGoodPlayersInjured = this.team.data[position].has.goodPlayerInjured,
-                hasGoodPositionBench = this.team.data[position].has.goodPositionBench,
+        Calculator.prototype.calculatePositions = function(position, team) {
+            var hasGoodPlayersInjured = team[position].has.goodPlayerInjured,
+                hasGoodPositionBench = team[position].has.goodPositionBench,
 
-                levelGoodPlayers = this.team.data[position].level.goodPlayers,
-                levelGoodPositionBench = this.team.data[position].level.goodPositionBench,
+                levelGoodPlayers = team[position].level.goodPlayers,
+                levelGoodPositionBench = team[position].level.goodPositionBench,
 
                 expGoodPlayers = this.exponent[position].exp.goodPlayers,
                 expGoodBench = this.exponent[position].exp.goodPositionBench;
@@ -118,9 +110,9 @@
             }
         };
 
-        Calculator.prototype.calculateTeamShape = function() {
+        Calculator.prototype.calculateTeamShape = function(team) {
             var result = 1,
-                teamShape = this.team.data.teamShape;
+                teamShape = team.teamShape;
 
             if(teamShape.has.chemistry) {
                 result = teamShape.level.chemistry * this.exponent.teamShape.exp.chemistry;
@@ -128,8 +120,8 @@
             return result;
         };
 
-        Calculator.prototype.calculateTeamExperience = function() {
-            var teamExperience = this.team.data.teamExperience,
+        Calculator.prototype.calculateTeamExperience = function(team) {
+            var teamExperience = team.teamExperience,
                 expTeamExperience = this.exponent.teamExperience,
 
                 hasExperience = teamExperience.has.experience,
@@ -147,8 +139,8 @@
             }
         };
 
-        Calculator.prototype.calculateCoach = function() {
-            var teamCoach = this.team.data.coach,
+        Calculator.prototype.calculateCoach = function(team) {
+            var teamCoach = team.coach,
                 expCoach = this.exponent.coach;
 
             if(teamCoach.has.changedCoachRecently) {
@@ -158,8 +150,8 @@
             return teamCoach.level.coachQuality * expCoach.exp.coachQuality + teamCoach.level.coachWinningHistory * expCoach.exp.coachWinningHistory;
         };
 
-        Calculator.prototype.calculateHistory = function() {
-            var teamHistory = this.team.data.history,
+        Calculator.prototype.calculateHistory = function(team) {
+            var teamHistory = team.history,
                 expHistory = this.exponent.history,
                 result = 0;
 
@@ -176,8 +168,8 @@
             return result;
         };
 
-        Calculator.prototype.calculateGeneralGoodPoints = function() {
-            var teamGeneralGood = this.team.data.generalGood,
+        Calculator.prototype.calculateGeneralGoodPoints = function(team) {
+            var teamGeneralGood = team.generalGood,
                 expGeneralGood = this.exponent.generalGood,
                 result = 0;
 
@@ -197,8 +189,8 @@
             return result;
         };
 
-        Calculator.prototype.calculateGeneralBadPoints = function() {
-            var teamGeneralBad = this.team.data.generalBad,
+        Calculator.prototype.calculateGeneralBadPoints = function(team) {
+            var teamGeneralBad = team.generalBad,
                 expGeneralBad = this.exponent.generalBad,
                 result = 0;
 
@@ -214,8 +206,8 @@
             return result;
         };
 
-        Calculator.prototype.calculateStandings = function() {
-            var teamStandings = this.team.data.standings,
+        Calculator.prototype.calculateStandings = function(team) {
+            var teamStandings = team.standings,
                 expStandings = this.exponent.standings.exp;
 
             return (teamStandings.wins * expStandings.wins) +

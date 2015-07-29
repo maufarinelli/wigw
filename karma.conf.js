@@ -20,11 +20,13 @@ module.exports = function(config) {
         'node_modules/lodash/index.js',
 
         'modules/exponent/exponent.js',
-        'modules/exponent/exponent-service.js',
         'modules/exponent/exponent-component.js',
 
-        'test/mocks/exponent-mock.js',
-        //'test/exponent/exponent-service.spec.js'
+        'modules/team/team.js',
+        'modules/team/team-component.js',
+
+        'test/mocks/*.js',
+
         'test/**/*.spec.js'
     ],
 
