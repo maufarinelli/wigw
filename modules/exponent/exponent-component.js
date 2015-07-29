@@ -1,26 +1,20 @@
 (function(angular) {
     'use strict';
 
-    function ExponentComponent(exponentService) {
-        var self,
-            data;
+    function ExponentComponent($http) {
 
         var Exponent = function(options) {
-            self = this;
-
-            this.promise = this.getPromise(options);
-        };
-
-        Exponent.prototype.getPromise = function(options) {
-            return exponentService.getExponent(options.url);
-        };
-
-        Exponent.prototype.setData = function(information) {
-            data = information;
-        };
-
-        Exponent.prototype.getData = function() {
-            return data;
+            return $http.get('/mock/' + options.url + '.json')
+                .success(function(data) {
+                             return data;
+                         })
+                .error(function(data, status) {
+                          return {
+                              data: data,
+                              status: status,
+                              message:'Exponent data was not found'
+                          };
+                      });
         };
 
         return Exponent;

@@ -21,10 +21,11 @@ module.exports = function(config) {
 
         'modules/exponent/exponent.js',
         'modules/exponent/exponent-service.js',
-        'modules/exponent/exponent-controller.js',
+        'modules/exponent/exponent-component.js',
 
-        'test/exponent-mock.js',
-        'test/exponent-service.spec.js'
+        'test/mocks/exponent-mock.js',
+        //'test/exponent/exponent-service.spec.js'
+        'test/**/*.spec.js'
     ],
 
 

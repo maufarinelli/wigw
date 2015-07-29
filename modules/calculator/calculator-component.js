@@ -101,8 +101,8 @@
                 levelGoodPlayers = this.team.data[position].level.goodPlayers,
                 levelGoodPositionBench = this.team.data[position].level.goodPositionBench,
 
-                expGoodPlayers = this.exponent.getData()[position].exp.goodPlayers,
-                expGoodBench = this.exponent.getData()[position].exp.goodPositionBench;
+                expGoodPlayers = this.exponent[position].exp.goodPlayers,
+                expGoodBench = this.exponent[position].exp.goodPositionBench;
 
             if(!hasGoodPlayersInjured) {
                 return _getGoodPlayerNotInjuredCalculate(hasGoodPositionBench, levelGoodPlayers, expGoodPlayers, levelGoodPositionBench, expGoodBench);
@@ -123,14 +123,14 @@
                 teamShape = this.team.data.teamShape;
 
             if(teamShape.has.chemistry) {
-                result = teamShape.level.chemistry * this.exponent.getData().teamShape.exp.chemistry;
+                result = teamShape.level.chemistry * this.exponent.teamShape.exp.chemistry;
             }
             return result;
         };
 
         Calculator.prototype.calculateTeamExperience = function() {
             var teamExperience = this.team.data.teamExperience,
-                expTeamExperience = this.exponent.getData().teamExperience,
+                expTeamExperience = this.exponent.teamExperience,
 
                 hasExperience = teamExperience.has.experience,
                 levelExperience = teamExperience.level.experience,
@@ -149,7 +149,7 @@
 
         Calculator.prototype.calculateCoach = function() {
             var teamCoach = this.team.data.coach,
-                expCoach = this.exponent.getData().coach;
+                expCoach = this.exponent.coach;
 
             if(teamCoach.has.changedCoachRecently) {
                 teamCoach.level.coachQuality = teamCoach.level.coachQuality / 2;
@@ -160,7 +160,7 @@
 
         Calculator.prototype.calculateHistory = function() {
             var teamHistory = this.team.data.history,
-                expHistory = this.exponent.getData().history,
+                expHistory = this.exponent.history,
                 result = 0;
 
             if(teamHistory.has.wonRegional) {
@@ -178,7 +178,7 @@
 
         Calculator.prototype.calculateGeneralGoodPoints = function() {
             var teamGeneralGood = this.team.data.generalGood,
-                expGeneralGood = this.exponent.getData().generalGood,
+                expGeneralGood = this.exponent.generalGood,
                 result = 0;
 
             if(teamGeneralGood.has.goodQuantityOfPlayers) {
@@ -199,7 +199,7 @@
 
         Calculator.prototype.calculateGeneralBadPoints = function() {
             var teamGeneralBad = this.team.data.generalBad,
-                expGeneralBad = this.exponent.getData().generalBad,
+                expGeneralBad = this.exponent.generalBad,
                 result = 0;
 
             if(teamGeneralBad.has.notPayingWagesOnTime) {
@@ -216,7 +216,7 @@
 
         Calculator.prototype.calculateStandings = function() {
             var teamStandings = this.team.data.standings,
-                expStandings = this.exponent.getData().standings.exp;
+                expStandings = this.exponent.standings.exp;
 
             return (teamStandings.wins * expStandings.wins) +
                 (teamStandings.ties * expStandings.ties) -

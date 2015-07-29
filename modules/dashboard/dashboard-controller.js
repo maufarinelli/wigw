@@ -4,11 +4,7 @@
         this.teams = [];
 
         function initExponent() {
-            self.exponent = new ExponentComponent({url: DASHBOARD.urlExponent});
-
-            return self.exponent.promise.then(function(result) {
-                self.exponent.setData(result.data);
-            });
+            return new ExponentComponent({url: DASHBOARD.urlExponent});
         }
 
         $scope.ready = false;
@@ -20,12 +16,12 @@
             'palmeiras'
         ];
 
-        initExponent().then(function() {
+        initExponent().then(function(exponent) {
             var promises = [];
             _.forEach(teamArray, function(url) {
                 var teamConfig = {
                     urlTeam: url,
-                    exponent: self.exponent
+                    exponent: exponent.data
                 };
                 var team = new CalculatorComponent(teamConfig);
                 var promise = team.calculation.then(function(calculation) {
