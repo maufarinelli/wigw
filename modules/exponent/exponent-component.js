@@ -20,6 +20,6 @@
         return Exponent;
     }
 
-    angular.module('exponent')
+    angular.module('exponent', [])
         .factory('ExponentComponent', ExponentComponent);
 })(window.angular);

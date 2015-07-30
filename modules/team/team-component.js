@@ -20,6 +20,6 @@
         return Team;
     }
 
-    angular.module('team')
+    angular.module('team', [])
         .factory('TeamComponent', TeamComponent);
 })(window.angular);
