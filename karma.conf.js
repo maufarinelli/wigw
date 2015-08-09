@@ -19,11 +19,11 @@ module.exports = function(config) {
         'node_modules/angular-mocks/angular-mocks.js',
         'node_modules/lodash/index.js',
 
-        'modules/exponent/exponent.js',
-        'modules/exponent/exponent-component.js',
+        'public/modules/exponent/exponent.js',
+        'public/modules/exponent/exponent-component.js',
 
-        'modules/team/team.js',
-        'modules/team/team-component.js',
+        'public/modules/team/team.js',
+        'public/modules/team/team-component.js',
 
         'test/mocks/*.js',
 

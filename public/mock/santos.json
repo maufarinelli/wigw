@@ -1,0 +1,136 @@
+{
+  "name": "Santos",
+  "strikers": {
+    "level": {
+      "goodPlayers": 8,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
+    }
+  },
+  "attackingMidfield" : {
+    "level": {
+      "goodPlayers": 7,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayerInjured": false,
+      "goodPositionBench": false
+    }
+  },
+  "defensiveMidfield" : {
+    "level": {
+      "goodPlayers": 7,
+      "goodPositionBench": 5
+    },
+    "has": {
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
+    }
+  },
+  "goalkeeper": {
+    "level": {
+      "goodPlayers": 7,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
+    }
+  },
+  "centralBack": {
+    "level": {
+      "goodPlayers": 7,
+      "goodPositionBench": 6
+    },
+    "has": {
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
+    }
+  },
+  "fullBack": {
+    "level": {
+      "goodPlayers": 6,
+      "goodPositionBench": 5
+    },
+    "has": {
+      "goodPlayerInjured": false,
+      "goodPositionBench": true
+    }
+  },
+  "teamShape": {
+    "has": {
+      "chemistry": true
+    },
+    "level": {
+      "chemistry": 7
+    }
+  },
+  "teamExperience": {
+    "has": {
+      "experience": true,
+      "goodBalanceExperienceYouth": true,
+      "tooMuchOldPlayers": false,
+      "tooMuchYoungPlayers": false
+    },
+    "level": {
+      "experience": 7,
+      "goodBalanceExperienceYouth": 8
+    }
+  },
+  "coach": {
+    "has": {
+      "changedCoachRecently": true
+    },
+    "level": {
+      "coachQuality": 6,
+      "coachWinningHistory": 7
+    }
+  },
+  "history": {
+    "has": {
+      "wonRegional": true,
+      "wonLastYear": false,
+      "wonManyChampionships": true
+    },
+    "level": {
+      "wonRegional": 6,
+      "wonLastYear": 4,
+      "wonManyChampionships": 3
+    }
+  },
+  "generalGood": {
+    "has": {
+      "goodQuantityOfPlayers": true,
+      "solidPreSeason": true,
+      "officialSupporterProgram": true,
+      "strengthPlayingHome": true
+    },
+    "level": {
+      "goodQuantityOfPlayers": 8,
+      "solidPreSeason": 7,
+      "officialSupporterProgram": 7,
+      "strengthPlayingHome": 8
+    }
+  },
+  "generalBad": {
+    "has": {
+      "notPayingWagesOnTime": true,
+      "playingOtherChampionship": false,
+      "internalClubProblems": true
+    },
+    "level": {
+      "notPayingWagesOnTime": 9,
+      "playingOtherChampionship": 7,
+      "internalClubProblems": 8
+    }
+  },
+  "standings": {
+    "wins": 3,
+    "losses": 7,
+    "ties": 4,
+    "goesDifference": -4
+  }
+}
