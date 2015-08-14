@@ -1,6 +1,8 @@
 <form name="teamboard" id="teamboard" novalidate ng-submit="teamboardCtrl.submit()">
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
         <fieldset ng-repeat="position in teamboardCtrl.positions" ng-include="teamboardCtrl.templates.positions" onload="load()"></fieldset>
+        <fieldset ng-include="teamboardCtrl.templates.experience"></fieldset>
+        <fieldset ng-include="teamboardCtrl.templates.shape"></fieldset>
     </div>
     <div><button type="submit">Submit</button></div>
 </form>

@@ -40,9 +40,12 @@
                 'teamboard.position.goalkeeper.has.bench': 'Tem bons goleiros na reserva que podem manter um bom nível no gol?',
                 'teamboard.position.goalkeeper.level.bench': 'Nível dos goleiros reservas :',
 
-                'teamboard.extra1': 'Nível dos goleiros reservas :',
-                'teamboard.extra4': 'Nível dos goleiros reservas asAS :',
-                'teamboard.extra3': 'Nível dos goleiros reservas ASasASAs :'
+                'teamboard.teamexperience.title': 'Experiencia',
+                'teamboard.teamexperience.level': 'Nível de experiencia da equipe',
+                'teamboard.teamexperience.balance': 'Tem um bom equilibrio entre jogadores jovens e experientes na equipe',
+
+                'teamboard.teamshape.title': 'Entrosamento',
+                'teamboard.teamshape.level': 'Nível de entrosamento da equipe'
             };
         });
 })(window.angular);

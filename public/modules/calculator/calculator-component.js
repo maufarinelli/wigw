@@ -111,32 +111,15 @@
         };
 
         Calculator.prototype.calculateTeamShape = function(team) {
-            var result = 1,
-                teamShape = team.teamShape;
-
-            if(teamShape.has.chemistry) {
-                result = teamShape.level.chemistry * this.exponent.teamShape.exp.chemistry;
-            }
-            return result;
+            return team.teamShape.level.chemistry * this.exponent.teamShape.exp.chemistry;
         };
 
         Calculator.prototype.calculateTeamExperience = function(team) {
             var teamExperience = team.teamExperience,
-                expTeamExperience = this.exponent.teamExperience,
+                expTeamExperience = this.exponent.teamExperience;
 
-                hasExperience = teamExperience.has.experience,
-                levelExperience = teamExperience.level.experience,
-                expExperience = expTeamExperience.exp.experience;
-
-            if(hasExperience && teamExperience.has.goodBalanceExperienceYouth) {
-                return levelExperience * expExperience + expTeamExperience.exp.goodBalanceExperienceYouth * teamExperience.level.goodBalanceExperienceYouth;
-            }
-            else if(hasExperience && teamExperience.has.tooMuchOldPlayers) {
-                return levelExperience * expExperience;
-            }
-            else {
-                return 1;
-            }
+            return teamExperience.level.experience * expTeamExperience.exp.experience +
+                expTeamExperience.exp.goodBalanceExperienceYouth * teamExperience.level.goodBalanceExperienceYouth;
         };
 
         Calculator.prototype.calculateCoach = function(team) {

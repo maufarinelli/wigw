@@ -61,20 +61,11 @@
     }
   },
   "teamShape": {
-    "has": {
-      "chemistry": true
-    },
     "level": {
       "chemistry": 5
     }
   },
   "teamExperience": {
-    "has": {
-      "experience": true,
-      "goodBalanceExperienceYouth": true,
-      "tooMuchOldPlayers": false,
-      "tooMuchYoungPlayers": false
-    },
     "level": {
       "experience": 7,
       "goodBalanceExperienceYouth": 7

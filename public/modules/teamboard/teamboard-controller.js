@@ -1,7 +1,7 @@
 (function(angular, _) {
     function TeamboardController($scope, $translate, ptText) {
         var self = this,
-            translateList = _.remove(_.keys(ptText), function(key) {
+            translatePositionList = _.remove(_.keys(ptText), function(key) {
                 return !key.search('teamboard.position');
             });
 
@@ -84,18 +84,50 @@
                 }
             ];
 
-            addPositionsTexts(_.pluck(self.positions, 'type'), translateList);
+            addPositionsTexts(_.pluck(self.positions, 'type'), translatePositionList);
+        }
+
+        function initTeamExperience() {
+            self.teamExperience = {
+                model: {
+                    experience                : 5,
+                    goodBalanceExperienceYouth: 5
+                },
+                text: {
+                    title  : ptText['teamboard.teamexperience.title'],
+                    level  : ptText['teamboard.teamexperience.level'],
+                    balance: ptText['teamboard.teamexperience.balance']
+                }
+            };
+        }
+
+        function initTeamShape() {
+            self.teamShape = {
+                model: {
+                    chemistry                : 5,
+                },
+                text: {
+                    title  : ptText['teamboard.teamshape.title'],
+                    level  : ptText['teamboard.teamshape.level'],
+                }
+            };
         }
 
         function init() {
             self.templates = {
-                positions: 'modules/teamboard/templates/positions.html'
+                positions: 'modules/teamboard/templates/positions.html',
+                experience: 'modules/teamboard/templates/experience.html',
+                shape: 'modules/teamboard/templates/shape.html'
             };
 
             initPositions();
+            initTeamExperience();
+            initTeamShape();
 
             self.submit = function() {
                 console.log(self.positions);
+                console.log(self.teamExperience.model);
+                console.log(self.teamShape.model);
             };
         }
 

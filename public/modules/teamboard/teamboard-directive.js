@@ -16,7 +16,6 @@
                     if(templates >= length){
                         onLoadComplete();
                     }
-
                 }
 
                 function onLoadComplete(){

@@ -1,0 +1,8 @@
+<h2 ng-bind="::teamboardCtrl.teamShape.text.title"></h2>
+<div class="form-group">
+    <label for="level-shape" class="control-label" ng-bind="::teamboardCtrl.teamShape.text.level"></label>
+    <div class="range-slider">
+        <input type="range" class="input-range form-control" id="level-shape" min="1" max="10" ng-value="5" ng-model="teamboardCtrl.teamShape.model.chemistry">
+        <span class="range-value"></span>
+    </div>
+</div>

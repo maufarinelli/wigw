@@ -1,0 +1,16 @@
+<h2 ng-bind="::teamboardCtrl.teamExperience.text.title"></h2>
+<div class="form-group">
+    <label for="level-experience" class="control-label" ng-bind="::teamboardCtrl.teamExperience.text.level"></label>
+    <div class="range-slider">
+        <input type="range" class="input-range form-control" id="level-experience" min="1" max="10" ng-value="5" ng-model="teamboardCtrl.teamExperience.model.experience">
+        <span class="range-value"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="level-balance" class="control-label" ng-bind="::teamboardCtrl.teamExperience.text.balance"></label>
+    <div class="range-slider">
+        <input type="range" class="input-range form-control" id="level-balance" min="1" max="10" ng-value="5" ng-model="teamboardCtrl.teamExperience.model.goodBalanceExperienceYouth">
+        <span class="range-value"></span>
+    </div>
+</div>
