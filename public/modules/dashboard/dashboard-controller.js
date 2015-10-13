@@ -1,10 +1,10 @@
 (function(angular) {
-    function DashboardController($scope, $q, CalculatorComponent, ExponentComponent, DASHBOARD) {
+    function DashboardController($scope, $q, CalculatorComponent, ExponentModel) {
         var self = this;
         this.teams = [];
 
         function initExponent() {
-            return new ExponentComponent({url: DASHBOARD.urlExponent});
+            return new ExponentModel();
         }
 
         $scope.ready = false;
@@ -44,8 +44,5 @@
     }
 
     angular.module('dashboard')
-        .constant('DASHBOARD', {
-            'urlExponent': 'exponent'
-        })
         .controller('DashboardController', DashboardController);
 })(window.angular);

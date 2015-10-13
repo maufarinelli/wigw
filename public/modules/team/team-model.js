@@ -1,7 +1,7 @@
 (function(angular) {
     'use strict';
 
-    function TeamComponent($http) {
+    function TeamModel($http) {
 
         var Team = function(options) {
             return $http.get('/team/?name=' + options.url)
@@ -21,5 +21,5 @@
     }
 
     angular.module('team', [])
-        .factory('TeamComponent', TeamComponent);
+        .factory('TeamModel', TeamModel);
 })(window.angular);

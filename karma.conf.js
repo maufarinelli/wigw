@@ -20,10 +20,10 @@ module.exports = function(config) {
         'node_modules/lodash/index.js',
 
         'public/modules/exponent/exponent.js',
-        'public/modules/exponent/exponent-component.js',
+        'public/modules/exponent/exponent-model.js',
 
         'public/modules/team/team.js',
-        'public/modules/team/team-component.js',
+        'public/modules/team/team-model.js',
 
         'test/mocks/*.js',
 

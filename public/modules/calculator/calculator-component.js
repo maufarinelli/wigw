@@ -1,7 +1,7 @@
 (function(angular, _) {
     'use strict';
     
-    function CalculatorComponent(TeamComponent) {
+    function CalculatorComponent(TeamModel) {
         var self;
 
         var Calculator = function(options) {
@@ -19,7 +19,7 @@
                     url: urlTeam
                 };
 
-            self.team = new TeamComponent(configTeam);
+            self.team = new TeamModel(configTeam);
         };
 
         Calculator.prototype.initCalculator = function() {

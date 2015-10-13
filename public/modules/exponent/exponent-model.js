@@ -1,9 +1,10 @@
 (function(angular) {
     'use strict';
 
-    function ExponentComponent($http) {
+    function ExponentModel($http) {
 
-        var Exponent = function(options) {
+        var Exponent = function() {
+
             return $http.get('/exponent/')
                 .success(function(data) {
                              return data;
@@ -21,5 +22,5 @@
     }
 
     angular.module('exponent', [])
-        .factory('ExponentComponent', ExponentComponent);
+        .factory('ExponentModel', ExponentModel);
 })(window.angular);
